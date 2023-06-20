@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="static/styles/guest.css">
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="static/scripts/form_validation.js" defer></script>
 
 </head>
 
@@ -56,32 +57,36 @@
         <main class="mb-auto col-12">
           <h1>Register a new brand</h1>
 
-          <form class="row needs-validation" novalidate>
+          <form class="row needs-validation" method="POST" novalidate>
             <div class="col-12">
               <label for="handle" class="form-label">Handle</label>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="at-sign">@</span>
                 <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="handle"
-                  aria-describedby="handleHelp" minlength="3" required>
+                  aria-describedby="handleHelp">
+                <div class="invalid-feedback">&nbsp;</div>
               </div>
               <div class="mb-3">
                 <label for="name" class="form-label">Brand Name</label>
-                <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="name" minlength="3"
-                  required>
+                <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="name">
+                <div class="invalid-feedback">&nbsp;</div>
               </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" class="form-control form-control-lg bg-gray-800 border-dark" id="email"
                   aria-describedby="emailHelp">
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <div class="invalid-feedback">&nbsp;</div>
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control form-control-lg bg-gray-800 border-dark" id="password">
+                <div class="invalid-feedback">&nbsp;</div>
               </div>
               <div class="mb-3 form-check py-3">
                 <input type="checkbox" class="form-check-input" id="isSolopreneur">
-                <label class="form-check-label" for="isSolopreneur">I run this business myself?</label>
+                <label class="form-check-label text-warning" for="isSolopreneur">I run this business myself?</label>
+                <div class="invalid-feedback">&nbsp;</div>
               </div>
               <button type="submit" class="btn btn-white btn-xl mb-4">Become a vitriner</button>
             </div>
