@@ -11,39 +11,43 @@ const validateInputs = () => {
   const passwordValue = $password.val();
 
   // Handle input
-  if (handleValue === '') {
-    $handle.siblings('.invalid-feedback').text('Please provide a handle');
-    $handle.addClass('is-invalid');
+  if ($handle.length) {
+    if (handleValue === '') {
+      $handle.siblings('.invalid-feedback').text('Please provide a handle');
+      $handle.addClass('is-invalid');
 
-    return false;
-  } else if (handleValue.length < 3) {
-    $handle.siblings('.invalid-feedback').text('Must not be less than 3 words');
-    $handle.addClass('is-invalid');
+      return false;
+    } else if (handleValue.length < 3) {
+      $handle.siblings('.invalid-feedback').text('Must not be less than 3 words');
+      $handle.addClass('is-invalid');
 
-    return false;
-  } else {
-    if ($handle.hasClass('is-invalid')) {
-      $handle.removeClass('is-invalid');
+      return false;
+    } else {
+      if ($handle.hasClass('is-invalid')) {
+        $handle.removeClass('is-invalid');
+      }
+      $handle.addClass('is-valid');
     }
-    $handle.addClass('is-valid');
   }
 
   // Brand name input
-  if (nameValue === '') {
-    $brandName.siblings('.invalid-feedback').text('Please provide a brand name');
-    $brandName.addClass('is-invalid');
+  if ($brandName.length) {
+    if (nameValue === '') {
+      $brandName.siblings('.invalid-feedback').text('Please provide a brand name');
+      $brandName.addClass('is-invalid');
 
-    return false;
-  } else if (nameValue.length < 3) {
-    $brandName.siblings('.invalid-feedback').text('Must not be less than 3 words');
-    $brandName.addClass('is-invalid');
+      return false;
+    } else if (nameValue.length < 3) {
+      $brandName.siblings('.invalid-feedback').text('Must not be less than 3 words');
+      $brandName.addClass('is-invalid');
 
-    return false;
-  } else {
-    if ($brandName.hasClass('is-invalid')) {
-      $brandName.removeClass('is-invalid');
+      return false;
+    } else {
+      if ($brandName.hasClass('is-invalid')) {
+        $brandName.removeClass('is-invalid');
+      }
+      $brandName.addClass('is-valid');
     }
-    $brandName.addClass('is-valid');
   }
 
   // Email input
