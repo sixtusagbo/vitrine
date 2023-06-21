@@ -30,7 +30,7 @@
   <!-- Favicon -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-  <title>Dashboard | Vitrine</title>
+  <title>Vixpert | Vitrine</title>
 
   <link rel="stylesheet" href="static/styles/bootstrap.css">
   <link rel="stylesheet" href="static/styles/aos.css">
@@ -39,6 +39,7 @@
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="static/scripts/bootstrap.bundle.min.js"></script>
+  <script src="static/scripts/vixpert.js"></script>
 
 </head>
 
@@ -136,7 +137,7 @@
             </h6>
             <ul class="nav flex-column mb-auto">
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="vixpert.html">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
                   <svg class="bi">
                     <use xlink:href="#puzzle" />
                   </svg>
@@ -173,21 +174,134 @@
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h2 class="h2">Dashboard</h2>
+          <h2 class="h2">Vixpert</h2>
           <div class="btn-toolbar mb-2 mb-md-0">
             <h4>Hi, brandname</h4>
           </div>
         </div>
 
-        <div class="content">
-          <p>
-            The humble wizard of vitrine known as <span class="fst-italic">Vixpert</span> will take you through the
-            process of setting up your profile.
-          </p>
+        <div class="d-flex h-100 w-100 bg-black text-white rounded">
+          <div class="h-100 container-fluid">
+            <div class="h-100 row d-flex align-items-center justify-content-center px-vw-5">
+              <!-- Muli-step form -->
+              <form class="row needs-validation" id="vixpertForm" method="POST" novalidate>
 
-          <p>Get started with <a href="vixpert.html" class="link-primary text-decoration-none fw-bold">vixpert</a>.</p>
+                <!-- TODO -->
+                <!--
+                  <h1 class="mb-4 text-center">Social Media</h1>
+                  <h1 class="mb-4 text-center">Work (--last)</h1> -->
+
+                <div class="col-12">
+
+                  <div class="tab">
+                    <h1 class="mb-4 text-center">Overview</h1>
+
+                    <div class="mb-3">
+                      <label for="statement" class="form-label">Brand Statement</label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="statement">
+                      <div id="statement_help" class="form-text">Example: Make your hair look fab</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="description" class="form-label">Description</label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="description">
+                      <div id="description_help" class="form-text">Example: Let us handle your hair. There's never a
+                        better
+                        way to make your hair look better. We make your hair radiate your beauty!</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="address" class="form-label">Address</label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="address">
+                    </div>
+                    <div class="mb-3">
+                      <label for="cover_image" class="form-label">Cover Image</label>
+                      <input type="file" class="form-control form-control-lg bg-gray-800 border-dark" id="cover_image">
+                    </div>
+                  </div>
+
+                  <div class="tab">
+                    <h1 class="mb-4 text-center">Details Section</h1>
+
+                    <div class="mb-3">
+                      <label for="detail_image" class="form-label">Details Image</label>
+                      <input type="file" class="form-control form-control-lg bg-gray-800 border-dark" id="detail_image">
+                    </div>
+                    <div class="mb-3">
+                      <label for="detail_lead" class="form-label">Details lead</label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="detail_lead">
+                      <div id="detail_lead_help" class="form-text">Example: Quality hairs should be standard</div>
+                    </div>
+
+                    <div class="mb-2" id="detail_points">
+                      <label class="form-label">
+                        Details Points
+                        <span class="form-text fst-italic">At least 2 points to back up your detail lead text</span>
+                      </label>
+
+                      <input type="text" class="form-control form-control bg-gray-800 border-dark detail_point mb-2">
+                      <input type="text" class="form-control form-control bg-gray-800 border-dark detail_point mb-2">
+                    </div>
+                    <div id="add_detail_point_input" class="btn btn-dark mb-3">
+                      <svg class="bi">
+                        <use xlink:href="#plus-circle" />
+                      </svg>
+                      Add Detail Point
+                    </div>
+                  </div>
+
+                  <div class="tab">
+                    <h1 class="mb-4 text-center">Social Media</h1>
+
+                    <div class="mb-3">
+                      <label for="twitter_url" class="form-label">Twitter Link</label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="twitter_url">
+                    </div>
+                    <div class="mb-3">
+                      <label for="whatsapp_no" class="form-label">
+                        Whatsapp Number
+                        <span class="form-text fst-italic">Include country code</span>
+                      </label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="whatsapp_no">
+                      <div id="whatsapp_no_help" class="form-text">Example: +2347080854254</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="instagram_url" class="form-label">Instagram Link</label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark"
+                        id="instagram_url">
+                    </div>
+                    <div class="mb-3">
+                      <label for="telegram_url" class="form-label">
+                        Telegram Link <span class="form-text fst-italic">Optional</span>
+                      </label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="telegram_url">
+                    </div>
+                    <div class="mb-3">
+                      <label for="youtube_url" class="form-label">
+                        Youtube Link <span class="form-text fst-italic">Optional</span>
+                      </label>
+                      <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="youtube_url">
+                    </div>
+                  </div>
+
+
+                  <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-white btn-xl me-3" id="prevBtn">Back</button>
+                    <button type="button" class="btn btn-white btn-xl" id="nextBtn">Continue</button>
+                  </div>
+
+                  <!-- Circles which indicates the steps of the form -->
+                  <div class="text-center mt-4">
+                    <span class="step"></span>
+                    <span class="step"></span>
+                    <span class="step"></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
         </div>
       </main>
+
     </div>
   </div>
 

@@ -11,6 +11,7 @@ const validateInputs = () => {
   const passwordValue = $password.val();
 
   // Handle input
+  // TODO: Check if handle is unique by requesting /brands/handle, it should return 404
   if ($handle.length) {
     if (handleValue === '') {
       $handle.siblings('.invalid-feedback').text('Please provide a handle');
@@ -18,7 +19,9 @@ const validateInputs = () => {
 
       return false;
     } else if (handleValue.length < 3) {
-      $handle.siblings('.invalid-feedback').text('Must not be less than 3 words');
+      $handle
+        .siblings('.invalid-feedback')
+        .text('Must not be less than 3 words');
       $handle.addClass('is-invalid');
 
       return false;
@@ -33,12 +36,16 @@ const validateInputs = () => {
   // Brand name input
   if ($brandName.length) {
     if (nameValue === '') {
-      $brandName.siblings('.invalid-feedback').text('Please provide a brand name');
+      $brandName
+        .siblings('.invalid-feedback')
+        .text('Please provide a brand name');
       $brandName.addClass('is-invalid');
 
       return false;
     } else if (nameValue.length < 3) {
-      $brandName.siblings('.invalid-feedback').text('Must not be less than 3 words');
+      $brandName
+        .siblings('.invalid-feedback')
+        .text('Must not be less than 3 words');
       $brandName.addClass('is-invalid');
 
       return false;
@@ -56,7 +63,9 @@ const validateInputs = () => {
     $email.addClass('is-invalid');
 
     return false;
-  } else if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)) {
+  } else if (
+    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)
+  ) {
     $email.siblings('.invalid-feedback').text('Invalid email');
     $email.addClass('is-invalid');
 
@@ -87,22 +96,23 @@ const validateInputs = () => {
   }
 
   return true;
-}
+};
 
-$(document).ready(
-  () => {
-    // Fetch all the forms we want to apply custom validation styles to
-    const forms = document.querySelectorAll('.needs-validation');
+$(document).ready(() => {
+  // Fetch all the forms we want to apply custom validation styles to
+  const forms = document.querySelectorAll('.needs-validation');
 
-    // Loop over them, validate and prevent submission
-    Array.from(forms).forEach(form => {
-      form.addEventListener('submit', event => {
+  // Loop over them, validate and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener(
+      'submit',
+      event => {
         if (!validateInputs()) {
           event.preventDefault();
           event.stopPropagation();
         }
-
-      }, false);
-    })
-  }
-);
+      },
+      false
+    );
+  });
+});
