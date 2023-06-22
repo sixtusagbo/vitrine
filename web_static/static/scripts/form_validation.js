@@ -64,7 +64,7 @@ const validateInputs = () => {
 
     return false;
   } else if (
-    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)
+    !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)
   ) {
     $email.siblings('.invalid-feedback').text('Invalid email');
     $email.addClass('is-invalid');
