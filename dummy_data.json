@@ -1,0 +1,386 @@
+[
+  {
+    "name": "Acme Corporation",
+    "handle": "acmecorp",
+    "email": "info@acmecorp.com",
+    "password": "acme@123",
+    "address": "123 Main Street, City",
+    "statement": "Providing top-notch products",
+    "description": "We are a leading provider of innovative solutions.",
+    "is_solopreneur": false,
+    "cover_image": "https://example.com/acme-cover.jpg",
+    "detail_lead": "About Acme Corporation",
+    "detail_image": "https://example.com/acme-detail.jpg",
+    "whatsapp_no": "+1234567890",
+    "twitter_url": "https://twitter.com/acmecorp",
+    "instagram_url": "https://instagram.com/acmecorp",
+    "youtube_url": "https://youtube.com/acmecorp",
+    "telegram_url": "https://t.me/acmecorp",
+    "detail_points": [
+      {
+        "content": "Established in 2005",
+        "brand_id": "acmecorp"
+      },
+      {
+        "content": "Award-winning products",
+        "brand_id": "acmecorp"
+      }
+    ],
+    "works": [
+      {
+        "title": "Product A",
+        "description": "Revolutionary product for everyday use",
+        "image_url": "https://example.com/product-a.jpg",
+        "brand_id": "acmecorp"
+      },
+      {
+        "title": "Product B",
+        "description": "The next generation of high-performance devices",
+        "image_url": "https://example.com/product-b.jpg",
+        "brand_id": "acmecorp"
+      },
+      {
+        "title": "Product C",
+        "description": "Solving complex problems with cutting-edge technology",
+        "image_url": "https://example.com/product-c.jpg",
+        "brand_id": "acmecorp"
+      }
+    ]
+  },
+  {
+    "name": "Infinite Innovations",
+    "handle": "infiniteinnov",
+    "email": "info@infiniteinnov.com",
+    "password": "innovate@123",
+    "address": "456 Park Avenue, Town",
+    "statement": "Empowering the future with innovation",
+    "description": "We strive to create revolutionary solutions.",
+    "is_solopreneur": false,
+    "cover_image": "https://example.com/innov-cover.jpg",
+    "detail_lead": "About Infinite Innovations",
+    "detail_image": "https://example.com/innov-detail.jpg",
+    "whatsapp_no": "+9876543210",
+    "twitter_url": "https://twitter.com/infiniteinnov",
+    "instagram_url": "https://instagram.com/infiniteinnov",
+    "youtube_url": "https://youtube.com/infiniteinnov",
+    "telegram_url": "https://t.me/infiniteinnov",
+    "detail_points": [
+      {
+        "content": "Pioneering new technology since 2010",
+        "brand_id": "infiniteinnov"
+      },
+      {
+        "content": "Transforming industries with our innovations",
+        "brand_id": "infiniteinnov"
+      }
+    ],
+    "works": [
+      {
+        "title": "Project X",
+        "description": "Revolutionizing the way we interact with technology",
+        "image_url": "https://example.com/project-x.jpg",
+        "brand_id": "infiniteinnov"
+      },
+      {
+        "title": "Project Y",
+        "description": "Breaking barriers with advanced AI solutions",
+        "image_url": "https://example.com/project-y.jpg",
+        "brand_id": "infiniteinnov"
+      },
+      {
+        "title": "Project Z",
+        "description": "Creating sustainable solutions for a better future",
+        "image_url": "https://example.com/project-z.jpg",
+        "brand_id": "infiniteinnov"
+      }
+    ]
+  },
+  {
+    "name": "Vitality Wellness",
+    "handle": "vitalitywell",
+    "email": "info@vitalitywell.com",
+    "password": "vitality@123",
+    "address": "789 Oak Street, Village",
+    "statement": "Nurturing mind, body, and soul",
+    "description": "We are dedicated to promoting holistic well-being.",
+    "is_solopreneur": true,
+    "cover_image": "https://example.com/vitality-cover.jpg",
+    "detail_lead": "About Vitality Wellness",
+    "detail_image": "https://example.com/vitality-detail.jpg",
+    "whatsapp_no": "+1357924680",
+    "twitter_url": "https://twitter.com/vitalitywell",
+    "instagram_url": "https://instagram.com/vitalitywell",
+    "youtube_url": "https://youtube.com/vitalitywell",
+    "telegram_url": "https://t.me/vitalitywell",
+    "detail_points": [
+      {
+        "content": "Bringing balance to your life",
+        "brand_id": "vitalitywell"
+      },
+      {
+        "content": "Promoting self-care and mindfulness",
+        "brand_id": "vitalitywell"
+      }
+    ],
+    "works": [
+      {
+        "title": "Mindfulness Meditation Program",
+        "description": "Guided meditation for stress relief and relaxation",
+        "image_url": "https://example.com/meditation.jpg",
+        "brand_id": "vitalitywell"
+      },
+      {
+        "title": "Yoga Retreat",
+        "description": "Immerse yourself in a rejuvenating yoga experience",
+        "image_url": "https://example.com/yoga-retreat.jpg",
+        "brand_id": "vitalitywell"
+      },
+      {
+        "title": "Healthy Cooking Workshop",
+        "description": "Learn to prepare delicious and nutritious meals",
+        "image_url": "https://example.com/cooking-workshop.jpg",
+        "brand_id": "vitalitywell"
+      }
+    ]
+  },
+  {
+    "name": "Elevate Fashion",
+    "handle": "elevatefashion",
+    "email": "info@elevatefashion.com",
+    "password": "elevate@123",
+    "address": "246 Elm Street, City",
+    "statement": "Redefining style with elegance",
+    "description": "We curate the latest trends for fashion enthusiasts.",
+    "is_solopreneur": false,
+    "cover_image": "https://example.com/elevate-cover.jpg",
+    "detail_lead": "About Elevate Fashion",
+    "detail_image": "https://example.com/elevate-detail.jpg",
+    "whatsapp_no": "+2468135790",
+    "twitter_url": "https://twitter.com/elevatefashion",
+    "instagram_url": "https://instagram.com/elevatefashion",
+    "youtube_url": "https://youtube.com/elevatefashion",
+    "telegram_url": "https://t.me/elevatefashion",
+    "detail_points": [
+      {
+        "content": "Curating fashion trends since 2012",
+        "brand_id": "elevatefashion"
+      },
+      {
+        "content": "Unleashing your unique sense of style",
+        "brand_id": "elevatefashion"
+      }
+    ],
+    "works": [
+      {
+        "title": "Spring Collection",
+        "description": "Discover the freshest styles for the season",
+        "image_url": "https://example.com/spring-collection.jpg",
+        "brand_id": "elevatefashion"
+      },
+      {
+        "title": "Summer Lookbook",
+        "description": "Get ready for summer with our trendy outfits",
+        "image_url": "https://example.com/summer-lookbook.jpg",
+        "brand_id": "elevatefashion"
+      },
+      {
+        "title": "Fall/Winter Campaign",
+        "description": "Stay cozy and chic during the colder months",
+        "image_url": "https://example.com/fall-winter-campaign.jpg",
+        "brand_id": "elevatefashion"
+      }
+    ]
+  },
+  {
+    "name": "Nature's Bounty",
+    "handle": "naturesbounty",
+    "email": "info@naturesbounty.com",
+    "password": "bounty@123",
+    "address": "369 Pine Street, Town",
+    "statement": "Harnessing the power of nature",
+    "description": "We offer natural and organic products for a healthy lifestyle.",
+    "is_solopreneur": false,
+    "cover_image": "https://example.com/natures-cover.jpg",
+    "detail_lead": "About Nature's Bounty",
+    "detail_image": "https://example.com/natures-detail.jpg",
+    "whatsapp_no": "+3692581470",
+    "twitter_url": "https://twitter.com/naturesbounty",
+    "instagram_url": "https://instagram.com/naturesbounty",
+    "youtube_url": "https://youtube.com/naturesbounty",
+    "telegram_url": "https://t.me/naturesbounty",
+    "detail_points": [
+      {
+        "content": "Harvesting the best from nature",
+        "brand_id": "naturesbounty"
+      },
+      {
+        "content": "Promoting well-being through natural remedies",
+        "brand_id": "naturesbounty"
+      }
+    ],
+    "works": [
+      {
+        "title": "Organic Superfoods Collection",
+        "description": "Nourish your body with nutrient-rich superfoods",
+        "image_url": "https://example.com/superfoods.jpg",
+        "brand_id": "naturesbounty"
+      },
+      {
+        "title": "Herbal Supplements",
+        "description": "Unlock the healing power of herbs",
+        "image_url": "https://example.com/herbal-supplements.jpg",
+        "brand_id": "naturesbounty"
+      },
+      {
+        "title": "Essential Oils",
+        "description": "Experience the therapeutic benefits of pure essential oils",
+        "image_url": "https://example.com/essential-oils.jpg",
+        "brand_id": "naturesbounty"
+      }
+    ]
+  },
+  {
+    "name": "TechVision",
+    "handle": "techvision",
+    "email": "info@techvision.com",
+    "password": "tech@123",
+    "address": "789 Elm Street, City",
+    "statement": "Envisioning the future of technology",
+    "description": "We explore innovative tech solutions for a digital world.",
+    "is_solopreneur": false,
+    "cover_image": "https://example.com/techvision-cover.jpg",
+    "detail_lead": "About TechVision",
+    "detail_image": "https://example.com/techvision-detail.jpg",
+    "whatsapp_no": "+7894561230",
+    "twitter_url": "https://twitter.com/techvision",
+    "instagram_url": "https://instagram.com/techvision",
+    "youtube_url": "https://youtube.com/techvision",
+    "telegram_url": "https://t.me/techvision",
+    "detail_points": [
+      {
+        "content": "Exploring cutting-edge technology",
+        "brand_id": "techvision"
+      },
+      {
+        "content": "Driving digital transformation",
+        "brand_id": "techvision"
+      }
+    ],
+    "works": [
+      {
+        "title": "Artificial Intelligence Solutions",
+        "description": "Unlock the power of AI for your business",
+        "image_url": "https://example.com/ai-solutions.jpg",
+        "brand_id": "techvision"
+      },
+      {
+        "title": "Internet of Things (IoT) Integration",
+        "description": "Connect and automate your devices",
+        "image_url": "https://example.com/iot-integration.jpg",
+        "brand_id": "techvision"
+      },
+      {
+        "title": "Blockchain Development",
+        "description": "Secure and transparent decentralized solutions",
+        "image_url": "https://example.com/blockchain-development.jpg",
+        "brand_id": "techvision"
+      }
+    ]
+  },
+  {
+    "name": "Green Earth",
+    "handle": "greenearth",
+    "email": "info@greenearth.com",
+    "password": "green@123",
+    "address": "123 Park Avenue, Town",
+    "statement": "Preserving our planet for future generations",
+    "description": "We promote eco-friendly practices and sustainable living.",
+    "is_solopreneur": true,
+    "cover_image": "https://example.com/greenearth-cover.jpg",
+    "detail_lead": "About Green Earth",
+    "detail_image": "https://example.com/greenearth-detail.jpg",
+    "whatsapp_no": "+1234567890",
+    "twitter_url": "https://twitter.com/greenearth",
+    "instagram_url": "https://instagram.com/greenearth",
+    "youtube_url": "https://youtube.com/greenearth",
+    "telegram_url": "https://t.me/greenearth",
+    "detail_points": [
+      {
+        "content": "Promoting sustainable living",
+        "brand_id": "greenearth"
+      },
+      {
+        "content": "Advocating for a greener future",
+        "brand_id": "greenearth"
+      }
+    ],
+    "works": [
+      {
+        "title": "Zero Waste Lifestyle",
+        "description": "Tips and products to reduce waste",
+        "image_url": "https://example.com/zero-waste.jpg",
+        "brand_id": "greenearth"
+      },
+      {
+        "title": "Organic Gardening",
+        "description": "Grow your own food sustainably",
+        "image_url": "https://example.com/organic-gardening.jpg",
+        "brand_id": "greenearth"
+      },
+      {
+        "title": "Renewable Energy Solutions",
+        "description": "Harness clean energy for a greener world",
+        "image_url": "https://example.com/renewable-energy.jpg",
+        "brand_id": "greenearth"
+      }
+    ]
+  },
+  {
+    "name": "Creative Minds",
+    "handle": "creativeminds",
+    "email": "info@creativeminds.com",
+    "password": "creative@123",
+    "address": "456 Oak Street, City",
+    "statement": "Unleashing creativity and imagination",
+    "description": "We foster artistic expression and innovation.",
+    "is_solopreneur": false,
+    "cover_image": "https://example.com/creativeminds-cover.jpg",
+    "detail_lead": "About Creative Minds",
+    "detail_image": "https://example.com/creativeminds-detail.jpg",
+    "whatsapp_no": "+4567891230",
+    "twitter_url": "https://twitter.com/creativeminds",
+    "instagram_url": "https://instagram.com/creativeminds",
+    "youtube_url": "https://youtube.com/creativeminds",
+    "telegram_url": "https://t.me/creativeminds",
+    "detail_points": [
+      {
+        "content": "Nurturing artistic talent",
+        "brand_id": "creativeminds"
+      },
+      {
+        "content": "Inspiring innovation through creativity",
+        "brand_id": "creativeminds"
+      }
+    ],
+    "works": [
+      {
+        "title": "Art Gallery Exhibition",
+        "description": "Showcasing diverse works of art",
+        "image_url": "https://example.com/art-gallery.jpg",
+        "brand_id": "creativeminds"
+      },
+      {
+        "title": "Creative Writing Contest",
+        "description": "Encouraging literary excellence",
+        "image_url": "https://example.com/writing-contest.jpg",
+        "brand_id": "creativeminds"
+      },
+      {
+        "title": "Digital Art Showcase",
+        "description": "Exploring the intersection of art and technology",
+        "image_url": "https://example.com/digital-art.jpg",
+        "brand_id": "creativeminds"
+      }
+    ]
+  }
+]
