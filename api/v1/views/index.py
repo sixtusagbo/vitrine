@@ -14,7 +14,7 @@ classes = {
     "works": Work
 }
 
-@app_views.route('/metrics')
+@app_views.route("/metrics")
 def statistics():
     """Retrieve the number of each object in storage by type"""
     result = {}
@@ -23,3 +23,13 @@ def statistics():
         result[key] = storage.count(value)
 
     return jsonify(result)
+
+@app_views.route('/mi_mi_show_dummy')
+def dummy():
+    """Display the dummy data generated with AI"""
+    from os import path
+    import json
+    with open(path.dirname(__file__) + "/dummy_data.json", "r") as file:
+        list_json = json.load(file)
+
+    return jsonify(list_json)
