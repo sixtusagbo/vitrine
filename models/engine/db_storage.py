@@ -6,6 +6,7 @@ Note: db - database
 from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
+from models.base_model import Base
 
 
 class DBStorage:
@@ -23,6 +24,9 @@ class DBStorage:
         ),
                                       pool_pre_ping=True
                                       )
+
+        if getenv('VIT_ENV') == 'test':
+            Base.metadata.drop_all(self.__engine)
 
     def new(self, obj):
         """Add new object to current db session"""
@@ -44,7 +48,7 @@ class DBStorage:
         Base.metadata.create_all(self.__engine)
 
         # create database session
-        session_factory = session_maker(bind=self.__engine,
+        session_factory = sessionmaker(bind=self.__engine,
                                         expire_on_commit=False)
         Session = scoped_session(session_factory)
         self.__session = Session()
