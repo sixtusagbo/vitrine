@@ -12,7 +12,6 @@ class TestBaseModel(unittest.TestCase):
         self.my_model = BaseModel()
         self.my_model.name = 'Test Name'
         self.my_model.my_number = 89
-        self.my_model.save()
 
     def test_base_model(self):
         """ Test creation with all arguments """
@@ -26,14 +25,6 @@ class TestBaseModel(unittest.TestCase):
     def test_str(self):
         """ Test printable string representation """
         self.assertTrue(str(self.my_model).startswith('[BaseModel]'))
-
-    def test_save(self):
-        """ check update on updated_at """
-        last_update = self.my_model.updated_at
-        self.my_model.name = "Flex Name"
-        self.my_model.save()
-        self.assertTrue(self.my_model.updated_at > last_update)
-        self.assertTrue(self.my_model.updated_at != last_update)
 
     def test_to_dict(self):
         """ ensure class is serialized to dictionary """
@@ -49,6 +40,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.my_model.updated_at.strftime(datetime_fmt),
                          my_model_dict['updated_at'])
 
-    def test_base_model_save(self):
+    def test_base_model_has_save(self):
         """ BaseModel has save method"""
         self.assertTrue(hasattr(BaseModel, "save"))

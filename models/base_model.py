@@ -45,6 +45,8 @@ class BaseModel:
     def save(self):
         """Store object"""
         self.updated_at = datetime.now()
+        models.storage.new(self)
+        models.storage.save()
 
     def to_dict(self):
         """Return modified version of __dict__"""

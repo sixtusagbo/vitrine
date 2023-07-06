@@ -74,3 +74,58 @@ class TestDBStorage(unittest.TestCase):
     def test_close(self):
         """Test if db storage has close method"""
         self.assertTrue(hasattr(DBStorage, 'close'))
+
+    def test_all(self):
+        """Check if all method returns objects appropriately"""
+        obj = Brand(name="SomeBrand", email="somebrand@gmail.com",
+                    handle="somebrand", password="somebrandpwd")
+        self.storage.new(obj)
+        self.storage.save()
+        all_brands = self.storage.all("Brand")
+        key = "{}.{}".format("Brand", obj.id)
+        self.assertIn(key, all_brands)
+        all_objs = self.storage.all()
+        self.assertIn(key, all_objs)
+
+    def test_get(self):
+        """Check if get method returns an object"""
+        obj = Brand(name="SomeBrand", email="somebrand@gmail.com",
+                    handle="somebrand", password="somebrandpwd")
+        self.storage.new(obj)
+        self.storage.save()
+        result = self.storage.get(Brand, obj.id)
+        self.assertEqual(obj.name, result.name)
+        self.assertEqual(obj.email, result.email)
+        self.assertEqual(obj.handle, result.handle)
+        self.assertEqual(obj.password, result.password)
+
+    def test_get_invalid_id(self):
+        """Check if get method returns none"""
+        obj = Brand(name="SomeBrand", email="somebrand@gmail.com",
+                    handle="somebrand", password="somebrandpwd")
+        self.storage.new(obj)
+        self.storage.save()
+        result = self.storage.get(Brand, "someblahid")
+        self.assertIsNone(result)
+
+    def test_count_all(self):
+        """Check if count returns all objects"""
+        obj = Brand(name="SomeBrand", email="somebrand@gmail.com",
+                    handle="somebrand", password="somebrandpwd")
+        obj2 = Brand(name="SomeBrand2", email="somebrand2@gmail.com",
+                     handle="somebrand2", password="somebrandpwd2")
+        obj.save()
+        obj2.save()
+        result = self.storage.count()
+        self.assertTrue(result >= 2)
+
+    def test_count_class(self):
+        """Check if count returns all objects of a specific class"""
+        obj = Brand(name="SomeBrand", email="somebrand@gmail.com",
+                    handle="somebrand", password="somebrandpwd")
+        obj2 = Brand(name="SomeBrand2", email="somebrand2@gmail.com",
+                     handle="somebrand2", password="somebrandpwd2")
+        obj.save()
+        obj2.save()
+        result = self.storage.count(Brand)
+        self.assertTrue(result >= 2)
