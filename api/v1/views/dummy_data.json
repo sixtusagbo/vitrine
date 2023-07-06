@@ -382,5 +382,101 @@
         "brand_id": "creativeminds"
       }
     ]
+  },
+  {
+    "name": "Luxe Haven",
+    "handle": "luxehaven",
+    "email": "info@luxehaven.com",
+    "password": "haven@123",
+    "address": "789 Maple Street, Town",
+    "statement": "Indulge in luxury and elegance",
+    "description": "We offer exquisite and opulent experiences for discerning individuals.",
+    "is_solopreneur": false,
+    "cover_image": "https://example.com/luxehaven-cover.jpg",
+    "detail_lead": "About Luxe Haven",
+    "detail_image": "https://example.com/luxehaven-detail.jpg",
+    "whatsapp_no": "+9876543210",
+    "twitter_url": "https://twitter.com/luxehaven",
+    "instagram_url": "https://instagram.com/luxehaven",
+    "youtube_url": "https://youtube.com/luxehaven",
+    "telegram_url": "https://t.me/luxehaven",
+    "detail_points": [
+      {
+        "content": "Unparalleled luxury and comfort",
+        "brand_id": "luxehaven"
+      },
+      {
+        "content": "Personalized services for a memorable experience",
+        "brand_id": "luxehaven"
+      }
+    ],
+    "works": [
+      {
+        "title": "Luxury Accommodations",
+        "description": "Experience lavish stays in our exclusive properties",
+        "image_url": "https://example.com/luxury-accommodations.jpg",
+        "brand_id": "luxehaven"
+      },
+      {
+        "title": "Fine Dining Experiences",
+        "description": "Savor exquisite cuisine prepared by renowned chefs",
+        "image_url": "https://example.com/fine-dining.jpg",
+        "brand_id": "luxehaven"
+      },
+      {
+        "title": "Spa and Wellness Retreats",
+        "description": "Rejuvenate your mind, body, and soul in luxurious surroundings",
+        "image_url": "https://example.com/spa-retreats.jpg",
+        "brand_id": "luxehaven"
+      }
+    ]
+  },
+  {
+    "name": "EcoEssentials",
+    "handle": "ecoessentials",
+    "email": "info@ecoessentials.com",
+    "password": "eco@123",
+    "address": "246 Forest Avenue, City",
+    "statement": "Promoting eco-friendly and sustainable living",
+    "description": "We offer a wide range of eco-friendly products for a greener lifestyle.",
+    "is_solopreneur": false,
+    "cover_image": "https://example.com/ecoessentials-cover.jpg",
+    "detail_lead": "About EcoEssentials",
+    "detail_image": "https://example.com/ecoessentials-detail.jpg",
+    "whatsapp_no": "+1234567890",
+    "twitter_url": "https://twitter.com/ecoessentials",
+    "instagram_url": "https://instagram.com/ecoessentials",
+    "youtube_url": "https://youtube.com/ecoessentials",
+    "telegram_url": "https://t.me/ecoessentials",
+    "detail_points": [
+      {
+        "content": "Promoting sustainable alternatives for everyday living",
+        "brand_id": "ecoessentials"
+      },
+      {
+        "content": "Ethically sourced and environmentally friendly products",
+        "brand_id": "ecoessentials"
+      }
+    ],
+    "works": [
+      {
+        "title": "Reusable Lifestyle Collection",
+        "description": "Discover eco-friendly alternatives to singleuse items",
+        "image_url": "https://example.com/reusable-collection.jpg",
+        "brand_id": "ecoessentials"
+      },
+      {
+        "title": "Natural Personal Care Products",
+        "description": "Nurture yourself with organic and chemical-free essentials",
+        "image_url": "https://example.com/personal-care.jpg",
+        "brand_id": "ecoessentials"
+      },
+      {
+        "title": "Sustainable Home Solutions",
+        "description": "Create an eco-conscious home with our sustainable products",
+        "image_url": "https://example.com/home-solutions.jpg",
+        "brand_id": "ecoessentials"
+      }
+    ]
   }
 ]
