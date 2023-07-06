@@ -29,7 +29,7 @@ def dummy():
     """Display the dummy data generated with AI"""
     from os import path
     import json
-    with open(path.dirname(__file__) + "/dummy_data.json", "r") as file:
+    with open("/home/vagrant/vitrine/dummy_data.json", "r") as file:
         list_json = json.load(file)
 
     return jsonify(list_json)
