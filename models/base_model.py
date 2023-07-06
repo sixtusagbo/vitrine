@@ -26,6 +26,12 @@ class BaseModel:
                     value = datetime.strptime(value, format)
                 if key != '__class__':
                     setattr(self, key, value)
+            if 'id' not in kwargs:
+                self.id = str(uuid.uuid4())
+            if 'created_at' not in kwargs:
+                self.created_at = datetime.now()
+            if 'updated_at' not in kwargs:
+                self.updated_at = datetime.now()
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
@@ -34,7 +40,7 @@ class BaseModel:
     def __str__(self):
         """Return informal string representation"""
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
-                                     self.__dict__)
+                                     self.to_dict())
 
     def save(self):
         """Store object"""
@@ -50,5 +56,11 @@ class BaseModel:
             else:
                 result[key] = value
         result['__class__'] = self.__class__.__name__
+        if '_sa_instance_state' in result.keys():
+            del result['_sa_instance_state']
 
         return result
+
+    def delete(self):
+        """Remove the current instance from storage"""
+        models.storage.delete(self)
