@@ -24,7 +24,7 @@ class BaseModel:
                 if key == 'created_at' or key == 'updated_at':
                     format = '%Y-%m-%dT%H:%M%S.%f'
                     value = datetime.strptime(value, format)
-                if key != '__class__' and not isinstance(value, list):
+                if not isinstance(value, list):
                     setattr(self, key, value)
             if 'id' not in kwargs:
                 self.id = str(uuid.uuid4())
@@ -57,7 +57,6 @@ class BaseModel:
                 result[key] = value.strftime('%Y-%m-%dT%H:%M:%S.%f')
             else:
                 result[key] = value
-        result['__class__'] = self.__class__.__name__
         if '_sa_instance_state' in result.keys():
             del result['_sa_instance_state']
 
