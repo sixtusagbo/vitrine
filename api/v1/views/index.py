@@ -26,7 +26,7 @@ def statistics():
     return jsonify(result)
 
 
-@app_views.route('/mi_mi_show_dummy')
+@app_views.route("/mi_mi_show_dummy")
 def dummy():
     """Display the dummy data generated with AI"""
     from os import path
