@@ -12,7 +12,7 @@ w3cvalidate *.html
 Python files in this codebase follow [Pycodestyle](https://pypi.org/project/pycodestyle/).
 * **Validating Python files**
 ```bash
-pycodestyle .
+pycodestyle . --ignore=E402
 ```
 
 ## Tests

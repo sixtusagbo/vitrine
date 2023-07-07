@@ -14,6 +14,7 @@ classes = {
     "works": Work
 }
 
+
 @app_views.route("/metrics")
 def statistics():
     """Retrieve the number of each object in storage by type"""
@@ -23,6 +24,7 @@ def statistics():
         result[key] = storage.count(value)
 
     return jsonify(result)
+
 
 @app_views.route('/mi_mi_show_dummy')
 def dummy():

@@ -29,3 +29,13 @@ class Brand(BaseModel, Base):
     detail_points = relationship("DetailPoint", cascade="all, delete",
                                  backref="brand")
     works = relationship("Work", cascade="all, delete", backref="brand")
+
+    def to_dict(self):
+        """Return modified version of the inherited to_dict"""
+        result = super(Brand, self).to_dict()
+
+        result["detail_points"] = []
+        for detail_point in self.detail_points:
+            result["detail_points"].append(detail_point.content)
+
+        return result

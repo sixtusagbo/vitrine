@@ -14,10 +14,17 @@ def brands():
     result = []
 
     for brand in storage.all(Brand).values():
-        item = brand.to_dict()
-        item["detail_points"] = []
-        for detail_point in brand.detail_points:
-            item["detail_points"].append(detail_point.content)
-        result.append(item)
+        result.append(brand.to_dict())
 
     return jsonify(result)
+
+
+@app_views.route('/brands/<handle>')
+def brand(handle):
+    """Return in JSON a brand information based on the brand's handle"""
+    brand = storage.get_brand(handle)
+
+    if not brand:
+        abort(404)
+
+    return brand.to_dict()

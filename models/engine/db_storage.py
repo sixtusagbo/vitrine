@@ -31,8 +31,8 @@ class DBStorage:
             getenv('VIT_MYSQL_HOST'),
             getenv('VIT_MYSQL_DB')
         ),
-                                      pool_pre_ping=True
-                                      )
+            pool_pre_ping=True
+        )
 
         if getenv('VIT_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
@@ -76,7 +76,7 @@ class DBStorage:
             # All objects that belong to class
             if type(cls) is str:
                 cls = classes[cls]
-            query_rows = self.__session.query(cls)
+            query_rows = self.__session.query(cls).order_by(cls.handle)
             for obj in query_rows:
                 key = "{}.{}".format(type(obj).__name__, obj.id)
                 result[key] = obj
@@ -84,14 +84,14 @@ class DBStorage:
         else:
             # All objects
             for name, value in classes.items():
-                query_rows = self.__session.query(value)
+                query_rows = self.__session.query(value).order_by(value.handle)
                 for obj in query_rows:
                     key = "{}.{}".format(name, obj.id)
                     result[key] = obj
             return result
 
     def get(self, cls, id):
-        """Return one object or `None` if not found"""
+        """Return one object using id or `None` if not found"""
         objects = self.__session.query(cls)
         for obj in objects:
             if obj.id == id:
@@ -110,6 +110,11 @@ class DBStorage:
             result = 0
             for obj in classes.values():
                 result += self.__session.query(func.count("*")).\
-                                                select_from(obj).\
-                                                scalar()
+                    select_from(obj).\
+                    scalar()
             return result
+
+    def get_brand(self, handle):
+        """Return one brand using handle or `None` if not found"""
+        query = self.__session.query(Brand).filter_by(handle=handle)
+        return query.one_or_none()
