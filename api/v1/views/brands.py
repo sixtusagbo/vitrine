@@ -44,6 +44,12 @@ def create_brand():
         abort(400, "Missing email")
     if "password" not in payload:
         abort(400, "Missing password")
+    if " " in payload["handle"]:
+        abort(400, "Handle contains space")
+    if len(payload["handle"]) > 15:
+        abort(400, "Handle is too long")
+    if len(payload["name"]) > 49:
+        abort(400, "Name is too long")
     if storage.get_brand(payload["handle"]):
         abort(400, "Handle is already taken")
 

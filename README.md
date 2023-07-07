@@ -20,7 +20,7 @@ This project is tested with the unittest module.
 * **Run Tests**
 *Run database setup scripts first*
 ```
-VIT_ENV=test VIT_MYSQL_USER=vit_test VIT_MYSQL_PWD=vit_test_pwd VIT_MYSQL_DB=vit_test_db VIT_MYSQL_HOST=localhost python3 -m unittest
+VIT_ENV=test VIT_MYSQL_USER=vit_test VIT_MYSQL_PWD=vit_test_pwd VIT_MYSQL_DB=vit_test_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5000 python3 -m unittest
 ```
 
 ## API

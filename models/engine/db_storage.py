@@ -76,7 +76,7 @@ class DBStorage:
             # All objects that belong to class
             if type(cls) is str:
                 cls = classes[cls]
-            query_rows = self.__session.query(cls).order_by(cls.handle)
+            query_rows = self.__session.query(cls)
             for obj in query_rows:
                 key = "{}.{}".format(type(obj).__name__, obj.id)
                 result[key] = obj
@@ -84,7 +84,7 @@ class DBStorage:
         else:
             # All objects
             for name, value in classes.items():
-                query_rows = self.__session.query(value).order_by(value.handle)
+                query_rows = self.__session.query(value)
                 for obj in query_rows:
                     key = "{}.{}".format(name, obj.id)
                     result[key] = obj

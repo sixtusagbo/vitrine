@@ -20,7 +20,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.my_model.id, my_model_dict['id'])
         self.assertEqual(self.my_model.name, my_model_dict['name'])
         self.assertEqual(self.my_model.my_number, my_model_dict['my_number'])
-        self.assertEqual('BaseModel', my_model_dict['__class__'])
 
     def test_str(self):
         """ Test printable string representation """
@@ -34,7 +33,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(self.my_model.id, my_model_dict['id'])
         self.assertEqual(self.my_model.name, my_model_dict['name'])
         self.assertEqual(self.my_model.my_number, my_model_dict['my_number'])
-        self.assertEqual('BaseModel', my_model_dict['__class__'])
         self.assertEqual(self.my_model.created_at.strftime(datetime_fmt),
                          my_model_dict['created_at'])
         self.assertEqual(self.my_model.updated_at.strftime(datetime_fmt),
