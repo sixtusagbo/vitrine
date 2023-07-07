@@ -4,7 +4,7 @@ This module contains RESTful actions for a brand's work
 """
 from models import storage
 from api.v1.views import app_views
-from flask import jsonify, abort
+from flask import jsonify, abort, request
 from models.brand import Brand
 from models.work import Work
 
@@ -21,3 +21,24 @@ def works(handle):
         result.append(work.to_dict())
 
     return jsonify(result)
+
+
+@app_views.route("/brands/<handle>/works", methods=["POST"])
+def create_post(handle):
+    """Add a work to a brand"""
+    brand = storage.get_brand(handle)
+    if not brand:
+        abort(404)
+    payload = request.get_json()
+    if not payload:
+        abort(400, "Not a JSON")
+    if "title" not in payload:
+        abort(400, "Missing title")
+    if "image_url" not in payload:
+        abort(400, "Missing image_url")
+
+    work = Work(**payload)
+    work.brand_id = brand.id
+    work.save()
+
+    return jsonify(work.to_dict()), 201
