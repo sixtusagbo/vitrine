@@ -24,7 +24,7 @@ def works(handle):
 
 
 @app_views.route("/brands/<handle>/works", methods=["POST"])
-def create_post(handle):
+def create_work(handle):
     """Add a work to a brand"""
     brand = storage.get_brand(handle)
     if not brand:

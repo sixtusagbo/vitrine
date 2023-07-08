@@ -1,17 +1,16 @@
 #!/usr/bin/python3
 """
-Test suite for vitrine api brands endpoints
+Test suite for vitrine api brand endpoints
 """
 import unittest
 import requests
 from os import getenv
-from models import storage
 from models.brand import Brand
 from datetime import datetime
 
 
 class TestViewsBrands(unittest.TestCase):
-    """Test api brands endpoints"""
+    """Test api brand endpoints"""
     base_url = "http://{}:{}/api/v1".format(getenv("VIT_API_HOST", "0.0.0.0"),
                                             getenv("VIT_API_PORT", "5000"))
 
