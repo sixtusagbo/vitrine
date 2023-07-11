@@ -12,7 +12,7 @@ from models import storage
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 app.register_blueprint(app_views)
-CORS(app, origins=["0.0.0.0"])
+CORS(app, origins=["*"])
 host = getenv("VIT_API_HOST", "0.0.0.0")
 port = getenv("VIT_API_PORT", "5000")
 

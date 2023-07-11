@@ -6,39 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <!-- SEO Meta Tags -->
-  <!-- dynamic -->
-  <meta name="title" content="Brandname | Vitrine">
-  <meta name="description" content="--With Vitrine, you can drive more audience to your brand.--">
+  <meta name="title" content="{{ meta["name"] }} | Vitrine">
+  <meta name="description" content="{{ meta["description"] }}">
   <meta name="author" content="Sixtus Agbo Miracle">
 
-  <!-- Open Graph / Facebook -->
-  <!-- dynamic -->
+  <!--Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vitrine.me/brandname">
-  <meta property="og:title" content="Brandname | Vitrine">
-  <meta property="og:description" content="--With Vitrine, you can drive more audience to your brand.--">
-  <meta property="og:image" content="--Brand cover image--">
+  <meta property="og:url" content="https://vitrine.me/{{ meta["handle"] }}">
+  <meta property="og:title" content="{{ meta["name"] }} | Vitrine">
+  <meta property="og:description" content="{{ meta["description"] }}">
+  <meta property="og:image" content="{{ meta["cover_image"] }}">
 
   <!-- Twitter -->
-  <!-- dynamic -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://vitrine.me/brandname">
-  <meta property="twitter:title" content="Brandname | Vitrine">
-  <meta property="twitter:description" content="--With Vitrine, you can drive more audience to your brand.--">
-  <meta property="twitter:image" content="--Brand cover image--">
+  <meta property="twitter:url" content="https://vitrine.me/{{ meta["handle"] }}">
+  <meta property="twitter:title" content="{{ meta["name"] }} | Vitrine">
+  <meta property="twitter:description" content="{{ meta["description"] }}">
+  <meta property="twitter:image" content="{{ meta["cover_image"] }}">
 
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-  <title>Brandname | Vitrine</title>
+  <title>{{ meta["name"] }} | Vitrine</title>
 
   <!-- Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
     rel="stylesheet">
-  <link href="../static/styles/bootstrap.css" rel="stylesheet">
-  <link href="../static/styles/fontawesome-all.min.css" rel="stylesheet">
-  <link href="../static/styles/main.css" rel="stylesheet">
+  <link href="../static/styles/bootstrap.css?{{ cache_id }}" rel="stylesheet">
+  <link href="../static/styles/fontawesome-all.min.css?{{ cache_id }}" rel="stylesheet">
+  <link href="../static/styles/main.css?{{ cache_id }}" rel="stylesheet">
 </head>
 
 <body>
@@ -47,8 +44,7 @@
   <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
     <div class="container">
 
-      <!-- dynamic -->
-      <a class="navbar-brand logo-text" href="index.html">Brandname</a>
+      <a class="navbar-brand logo-text brandname" href="index.html">Brandname</a>
 
       <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -67,8 +63,7 @@
           </li>
         </ul>
         <span class="nav-item">
-          <!-- dynamic solopreneuer, -> me or us -->
-          <a class="btn-outline-sm" href="#contact">Contact us</a>
+          <a class="btn-outline-sm" href="#contact">Contact {{ 'me' if is_solopreneur else 'us' }}</a>
         </span>
       </div> <!-- end of navbar-collapse -->
     </div> <!-- end of container -->
@@ -84,17 +79,16 @@
       <div class="row">
         <div class="col-lg-7 col-xl-5">
           <div class="text-container">
-            <h1 class="h1-large">Make your hair look fab</h1>
-            <p class="p-large">Let us handle your hair. There's never a better way
+            <h1 class="h1-large" id="statement">Make your hair look fab</h1>
+            <p class="p-large description">Let us handle your hair. There's never a better way
               to make your hair look better. We make your hair radiate your beauty!</p>
             <a class="btn-solid-lg" href="#details">More details</a>
-            <!-- dynamic solopreneuer, -> me or us -->
-            <a class="btn-outline-lg" href="#contact">Contact us</a>
+            <a class="btn-outline-lg" href="#contact">Contact {{ 'me' if is_solopreneur else 'us' }}</a>
           </div> <!-- end of text-container -->
         </div> <!-- end of col -->
         <div class="col-lg-5 col-xl-7">
-          <div class="image-container">
-            <img class="img-fluid" src="../static/images/cover_image-default.png" alt="alternative">
+          <div class="image-container w-100 h-100">
+            <img class="img-fluid h-100" id="cover_image" src="../static/images/cover_image-default.png" alt="Brand Cover">
           </div> <!-- end of image-container -->
         </div> <!-- end of col -->
       </div> <!-- end of row -->
@@ -109,36 +103,35 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-xl-5">
-          <div class="image-container">
-            <img class="img-fluid" src="../static/images/details-default.png" alt="alternative">
+          <div class="image-container h-100">
+            <img class="img-fluid rounded h-100" id="detail_image" src="../static/images/details-default.png" alt="Detail">
           </div> <!-- end of image-container -->
         </div> <!-- end of col -->
         <div class="col-lg-6 col-xl-7">
           <article class="text-container">
-            <h2>Office spaces should be unique they don’t need to look the same</h2>
-            <ul class="list-unstyled li-space-lg">
+            <h2 id="detail_lead">Office spaces should be unique they don’t need to look the same</h2>
+            <ul class="list-unstyled li-space-lg" id="detail_points">
               <li class="d-flex">
                 <i class="fas fa-square"></i>
-                <div class="flex-grow-1">At every tiled on ye defer do. No attention suspected oh difficult. Fond his
-                  say</div>
+                <p class="flex-grow-1">At every tiled on ye defer do. No attention suspected oh difficult. Fond his
+                  say</p>
               </li>
               <li class="d-flex">
                 <i class="fas fa-square"></i>
-                <div class="flex-grow-1">Old meet cold find come whom. The sir park sake bred. Wonder matter now</div>
+                <p class="flex-grow-1">Old meet cold find come whom. The sir park sake bred. Wonder matter now</p>
               </li>
               <li class="d-flex">
                 <i class="fas fa-square"></i>
-                <div class="flex-grow-1">Can estate esteem assure fat roused. Am performed on existence as discourse
-                </div>
+                <p class="flex-grow-1">Can estate esteem assure fat roused. Am performed on existence as discourse
+                </p>
               </li>
               <li class="d-flex">
                 <i class="fas fa-square"></i>
-                <div class="flex-grow-1">existence as discourse is. Pleasure friendly at marriage blessing or should
-                </div>
+                <p class="flex-grow-1">existence as discourse is. Pleasure friendly at marriage blessing or should
+                </p>
               </li>
             </ul>
-            <!-- dynamic solopreneuer, -> me or us -->
-            <a class="btn-solid-reg" href="#contact">Book Us</a>
+            <a class="btn-solid-reg" href="#contact">Book {{ 'me' if is_solopreneur else 'us' }}</a>
           </article> <!-- end of text-container -->
         </div> <!-- end of col -->
       </div> <!-- end of row -->
@@ -156,7 +149,7 @@
         </div> <!-- end of col -->
       </div> <!-- end of row -->
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" id="works">
 
           <!-- Card -->
           <div class="card">
@@ -232,7 +225,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <iframe src="https://www.google.com/maps?q=Ezillo,%20Ebonyi,%20Nigeria&amp;output=embed" allowfullscreen=""></iframe>
+          <iframe src="https://www.google.com/maps?q={{ meta["address"] }}&amp;output=embed" allowfullscreen=""></iframe>
         </div> <!-- end of col -->
         <div class="col-lg-6">
           <div class="text-container">
@@ -262,7 +255,7 @@
   <!-- end of contact -->
 
   <!-- Whatsapp button -->
-  <a href="#whatsapp_url" id="myBtn">
+  <a href="#whatsapp_url" id="whatsapp-btn" target="_blank">
     <img src="../static/images/whatsapp_icon.png" alt="whatsapp">
   </a>
   <!-- end whatsapp button -->
@@ -273,10 +266,8 @@
       <div class="row">
         <div class="col-lg-12">
           <article class="footer-col first">
-            <!-- dynamic -->
-            <h6>About Brandname</h6>
-            <p class="p-small">Let us handle your hair. There's never a better way to make your hair look better. We
-              make your hair radiate your beauty!</p>
+            <h6>About <span class="brandname">Brandname</span></h6>
+            <p class="p-small description">Let us handle your hair. There's never a better way to make your hair look better. We make your hair radiate your beauty!</p>
           </article> <!-- end of footer-col -->
           <div class="footer-col second">
             <h6>Links</h6>
@@ -288,33 +279,31 @@
           </div> <!-- end of footer-col -->
           <div class="footer-col third">
             <span class="fa-stack">
-              <a href="#your-link">
+              <a href="#your-link" id="twitter-link" target="_blank">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fab fa-twitter fa-stack-1x"></i>
               </a>
             </span>
             <span class="fa-stack">
-              <a href="#your-link">
+              <a href="#your-link" id="instagram-link" target="_blank">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fab fa-instagram fa-stack-1x"></i>
               </a>
             </span>
             <span class="fa-stack">
-              <a href="#your-link">
+              <a href="#your-link" id="youtube-link" target="_blank">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fab fa-youtube fa-stack-1x"></i>
               </a>
             </span>
             <span class="fa-stack">
-              <a href="#your-link">
+              <a href="#your-link" id="telegram-link" target="_blank">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fab fa-telegram fa-stack-1x"></i>
               </a>
             </span>
             <p class="p-small">
-              <!-- dynamic email -->
-              <!-- dynamic solopreneuer, -> I would or we would -->
-              We would love to hear from you <a href="mailto:contact@site.com"><strong>address@mail.com</strong></a>
+              {{ 'I' if is_solopreneur else 'We' }} would love to hear from you <a href="mailto:contact@site.com" id="brand-email"><strong>address@mail.com</strong></a>
             </p>
           </div> <!-- end of footer-col -->
         </div> <!-- end of col -->
@@ -329,15 +318,20 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12">
-          <!-- dynamic, user join year -->
-          <p class="p-small">Copyright &copy; <a href="javascript:void(0)" onclick="topFunction()">Brandname</a> 2023
+          <p class="p-small">
+            Copyright &copy;
+            <a href="javascript:void(0)" class="brandname"> Brandname</a>
+            <span id="created-year">2023</span>
           </p>
         </div> <!-- end of col -->
       </div> <!-- enf of row -->
 
       <div class="row">
         <div class="col-lg-12">
-          <p class="p-small">Powered By <a href="/" style="color: var(--bs-indigo);" class="fw-bold">Vitrine</a></p>
+          <p class="p-small">
+            Powered By
+            <a href="/" style="color: var(--bs-indigo);" class="fw-bold">Vitrine</a>
+          </p>
         </div> <!-- end of col -->
       </div> <!-- enf of row -->
     </div> <!-- end of container -->
@@ -345,8 +339,10 @@
   <!-- end of copyright -->
 
   <!-- Scripts -->
-  <script src="../static/scripts/bootstrap.bundle.min.js"></script>
-  <script src="../static/scripts/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../static/scripts/bootstrap.bundle.min.js?{{ cache_id }}"></script>
+  <script src="../static/scripts/main.js?{{ cache_id }}"></script>
+  <script src="../static/scripts/brand.js?{{ cache_id }}"></script>
 </body>
 
 </html>

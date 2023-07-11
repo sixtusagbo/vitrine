@@ -37,6 +37,10 @@ body, p {
 	font: 400 1rem/1.625rem "Open Sans", sans-serif;
 }
 
+img {
+  transition: all .5s;
+}
+
 h1 {
 	color: #191e47;
 	font-weight: 700;
@@ -472,6 +476,11 @@ a:hover {
 	margin-top: 5rem;
 }
 
+.header #cover_image {
+  border-radius: .7rem;
+  border-top-left-radius: 8rem;
+}
+
 
 /*********************/
 /*     Details 1     */
@@ -676,7 +685,7 @@ a:hover {
 /******************************/
 /*     Floating Button     */
 /******************************/
-#myBtn {
+#whatsapp-btn {
 	position: fixed; 
   z-index: 99; 
 	bottom: 20px; 
@@ -693,11 +702,11 @@ a:hover {
 	align-items: center;
 }
 
-#myBtn:hover {
+#whatsapp-btn:hover {
 	background-color: #ddd;
 }
 
-#myBtn img {
+#whatsapp-btn img {
 	/* margin-bottom: 0.25rem; */
 	width: 55%;
 }
@@ -1008,6 +1017,11 @@ a:hover {
 	.basic-2 .image-container {
 		display: none;
 	}
+
+  .header #cover_image {
+    border-top-left-radius: 6rem;
+    border-top-right-radius: 6rem;
+  }
 	/* end of details 1 */
 }
 
