@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""Routes for the general blueprint"""
 from web.general import general_bp
 from flask import render_template, abort
 import uuid

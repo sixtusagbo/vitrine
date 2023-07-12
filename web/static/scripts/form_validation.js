@@ -57,24 +57,26 @@ const validateInputs = () => {
     }
   }
 
-  // Email input
-  if (emailValue === '') {
-    $email.siblings('.invalid-feedback').text('Please provide an email');
-    $email.addClass('is-invalid');
+  if ($email.length) {
+    // Email input
+    if (emailValue === '') {
+      $email.siblings('.invalid-feedback').text('Please provide an email');
+      $email.addClass('is-invalid');
 
-    return false;
-  } else if (
-    !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)
-  ) {
-    $email.siblings('.invalid-feedback').text('Invalid email');
-    $email.addClass('is-invalid');
+      return false;
+    } else if (
+      !/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)
+    ) {
+      $email.siblings('.invalid-feedback').text('Invalid email');
+      $email.addClass('is-invalid');
 
-    return false;
-  } else {
-    if ($email.hasClass('is-invalid')) {
-      $email.removeClass('is-invalid');
+      return false;
+    } else {
+      if ($email.hasClass('is-invalid')) {
+        $email.removeClass('is-invalid');
+      }
+      $email.addClass('is-valid');
     }
-    $email.addClass('is-valid');
   }
 
   // Password input
@@ -103,10 +105,10 @@ $(document).ready(() => {
   const forms = document.querySelectorAll('.needs-validation');
 
   // Loop over them, validate and prevent submission
-  Array.from(forms).forEach(form => {
+  Array.from(forms).forEach((form) => {
     form.addEventListener(
       'submit',
-      event => {
+      (event) => {
         if (!validateInputs()) {
           event.preventDefault();
           event.stopPropagation();

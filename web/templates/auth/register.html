@@ -1,106 +1,86 @@
-<!doctype html>
-<html class="h-100" lang="en">
+{% extends "auth/auth_base.html" %}
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block title %}Register a new account{% endblock %}
 
-  <!-- SEO Meta Tags -->
-  <!-- dynamic -->
-  <meta name="title" content="Vitrine">
-  <meta name="description" content="Showcase your brand">
-  <meta name="author" content="Sixtus Agbo">
-
-  <!-- Open Graph / Facebook -->
-  <!-- dynamic -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vitrine.me">
-  <meta property="og:title" content="Vitrine">
-  <meta property="og:description" content="Showcase your brand">
-  <meta property="og:image" content="/static/images/banner.jpeg">
-
-  <!-- Twitter -->
-  <!-- dynamic -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://vitrine.me">
-  <meta property="twitter:title" content="Vitrine">
-  <meta property="twitter:description" content="Showcase your brand">
-  <meta property="twitter:image" content="/static/images/banner.jpeg">
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-  <title>Register a new account | Vitrine</title>
-
-  <link rel="stylesheet" href="static/styles/bootstrap.css">
-  <link rel="stylesheet" href="static/styles/aos.css">
-  <link rel="stylesheet" href="static/styles/guest.css">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="static/scripts/bootstrap.bundle.min.js"></script>
+{% block scripts %}
   <script src="static/scripts/form_validation.js" defer></script>
+{% endblock %}
 
-</head>
+{% block content %}
+            <h1>Register a new brand</h1>
 
-<body class="d-flex h-100 w-100 bg-black text-white" data-bs-spy="scroll" data-bs-target="#navScroll">
+            <form class="row needs-validation" method="POST" novalidate>
+              <div class="col-12">
+                <label for="handle" class="form-label">Handle</label>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="at-sign">@</span>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg bg-gray-800 border-dark"
+                    id="handle"
+                    name="handle"
+                  />
+                  <div class="invalid-feedback">&nbsp;</div>
+                </div>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Brand Name</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-lg bg-gray-800 border-dark"
+                    id="name"
+                    name="name"
+                  />
+                  <div class="invalid-feedback">&nbsp;</div>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input
+                    type="email"
+                    class="form-control form-control-lg bg-gray-800 border-dark"
+                    id="email"
+                    aria-describedby="emailHelp"
+                    name="email"
+                  />
+                  <div id="emailHelp" class="form-text">
+                    We'll never share your email with anyone else.
+                  </div>
+                  <div class="invalid-feedback">&nbsp;</div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    type="password"
+                    class="form-control form-control-lg bg-gray-800 border-dark"
+                    id="password"
+                    name="password"
+                  />
+                  <div class="invalid-feedback">&nbsp;</div>
+                </div>
+                <div class="mb-3 form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="is_solopreneur"
+                    name="is_solopreneur"
+                  />
+                  <label
+                    class="form-check-label text-warning"
+                    for="is_solopreneur"
+                    >I run this business myself?</label
+                  >
+                  <div class="invalid-feedback">&nbsp;</div>
+                </div>
 
-  <div class="h-100 container-fluid">
-    <div class="h-100 row d-flex align-items-stretch">
+                <p class="fs-6">
+                  Already a member?
+                  <a class="link-info text-decoration-none" href="{{url_for('auth.login')}}">
+                    Login
+                  </a>
+                </p>
 
-      <div class="col-12 col-md-7 col-lg-6 col-xl-5 d-flex align-items-start flex-column px-vw-5">
-
-        <header class="mb-auto py-vh-2 col-12">
-          <a class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center" href="/">
-            <span class="ms-md-1 mt-1 fw-bold me-md-5 border-top border-bottom">Vitrine</span>
-          </a>
-
-        </header>
-        <main class="mb-auto col-12">
-          <h1>Register a new brand</h1>
-
-          <form class="row needs-validation" method="POST" novalidate>
-            <div class="col-12">
-              <label for="handle" class="form-label">Handle</label>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="at-sign">@</span>
-                <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="handle">
-                <div class="invalid-feedback">&nbsp;</div>
+                <button type="submit" class="btn btn-white btn-xl mb-4">
+                  Become a vitriner
+                </button>
               </div>
-              <div class="mb-3">
-                <label for="name" class="form-label">Brand Name</label>
-                <input type="text" class="form-control form-control-lg bg-gray-800 border-dark" id="name">
-                <div class="invalid-feedback">&nbsp;</div>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control form-control-lg bg-gray-800 border-dark" id="email"
-                  aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                <div class="invalid-feedback">&nbsp;</div>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control form-control-lg bg-gray-800 border-dark" id="password">
-                <div class="invalid-feedback">&nbsp;</div>
-              </div>
-              <div class="mb-3 form-check py-3">
-                <input type="checkbox" class="form-check-input" id="isSolopreneur">
-                <label class="form-check-label text-warning" for="isSolopreneur">I run this business myself?</label>
-                <div class="invalid-feedback">&nbsp;</div>
-              </div>
-
-              <button type="submit" class="btn btn-white btn-xl mb-4">Become a vitriner</button>
-            </div>
-          </form>
-
-        </main>
-      </div>
-
-      <div class="col-12 col-md-5 col-lg-6 col-xl-7 gradient d-none d-md-block"></div>
-
-    </div>
-
-  </div>
-</body>
-
-</html>
+            </form>
+{% endblock %}
