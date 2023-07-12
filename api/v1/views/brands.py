@@ -53,7 +53,10 @@ def create_brand():
     if storage.get_brand(payload["handle"]):
         abort(400, "Handle is already taken")
 
+    password = payload["password"]
+    del payload["password"]
     brand = Brand(**payload)
+    brand.hash_password(password)
     brand.save()
 
     return jsonify(brand.to_dict()), 201

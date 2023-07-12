@@ -6,6 +6,7 @@ from models.brand import Brand
 from models.detail_point import DetailPoint
 from models.work import Work
 from models import storage
+from api.v1.auth import auth
 
 
 classes = {
@@ -16,12 +17,14 @@ classes = {
 
 
 @app_views.route("/metrics")
+@auth.login_required
 def statistics():
     """Retrieve the number of each object in storage by type"""
     result = {}
 
     for key, value in classes.items():
         result[key] = storage.count(value)
+    result["current_user"] = g.user.to_dict()
 
     return jsonify(result)
 

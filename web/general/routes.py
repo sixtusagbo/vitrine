@@ -3,6 +3,7 @@ from flask import render_template, abort
 import uuid
 from models import storage
 
+
 @general_bp.route("/<handle>")
 def brand(handle):
     """Return a brand's page"""

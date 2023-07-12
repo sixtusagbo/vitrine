@@ -18,7 +18,10 @@ with open("dummy_data.json", "r") as file:
     list_json = json.load(file)
 
 for data in list_json:
+    password = data["password"]
+    del data["password"]
     brand = Brand(**data)
+    brand.hash_password(password)
     brand.save()
     for item in data["detail_points"]:
         point = DetailPoint(content=item["content"], brand_id=brand.id)

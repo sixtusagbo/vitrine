@@ -5,7 +5,10 @@ from web.general import general_bp
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+# Replace with strong secret key in production
+app.config['SECRET_KEY'] = 'dev'
 app.register_blueprint(general_bp)
+
 
 @app.teardown_appcontext
 def dispose(exception):
@@ -16,6 +19,7 @@ def dispose(exception):
 @app.errorhandler(404)
 def not_found(error):
     return render_template("errors/404.html")
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)

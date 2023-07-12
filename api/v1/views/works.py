@@ -7,6 +7,7 @@ from api.v1.views import app_views
 from flask import jsonify, abort, request
 from models.brand import Brand
 from models.work import Work
+from api.v1.auth import auth
 
 
 @app_views.route("/brands/<handle>/works")
@@ -24,6 +25,7 @@ def works(handle):
 
 
 @app_views.route("/brands/<handle>/works", methods=["POST"])
+@auth.login_required
 def create_work(handle):
     """Add a work to a brand"""
     brand = storage.get_brand(handle)
