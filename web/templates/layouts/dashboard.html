@@ -1,47 +1,10 @@
-<!doctype html>
-<html lang="en">
+{% extends "layouts/base.html" %}
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+{% endblock %}
 
-  <!-- SEO Meta Tags -->
-  <!-- dynamic -->
-  <meta name="title" content="Vitrine">
-  <meta name="description" content="Showcase your brand">
-  <meta name="author" content="Sixtus Agbo">
-
-  <!-- Open Graph / Facebook -->
-  <!-- dynamic -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vitrine.me">
-  <meta property="og:title" content="Vitrine">
-  <meta property="og:description" content="Showcase your brand">
-  <meta property="og:image" content="/static/images/banner.jpeg">
-
-  <!-- Twitter -->
-  <!-- dynamic -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://vitrine.me">
-  <meta property="twitter:title" content="Vitrine">
-  <meta property="twitter:description" content="Showcase your brand">
-  <meta property="twitter:image" content="/static/images/banner.jpeg">
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
-  <title>Dashboard | Vitrine</title>
-
-  <link rel="stylesheet" href="static/styles/bootstrap.css">
-  <link rel="stylesheet" href="static/styles/aos.css">
-  <link rel="stylesheet" href="static/styles/guest.css">
-  <link rel="stylesheet" href="static/styles/dashboard.css">
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="static/scripts/bootstrap.bundle.min.js"></script>
-
-</head>
-
+{% block body %}
 <body>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="door-closed" viewBox="0 0 16 16">
@@ -171,26 +134,12 @@
       </div>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div
-          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h2 class="h2">Dashboard</h2>
-          <div class="btn-toolbar mb-2 mb-md-0">
-            <h4>Hi, brandname</h4>
-          </div>
-        </div>
-
-        <div class="content">
-          <p>
-            The humble wizard of vitrine known as <span class="fst-italic">Vixpert</span> will take you through the
-            process of setting up your profile.
-          </p>
-
-          <p>Get started with <a href="vixpert.html" class="link-primary text-decoration-none fw-bold">vixpert</a>.</p>
-        </div>
+        {% block content %}
+        {% endblock %}
       </main>
     </div>
   </div>
 
 </body>
 
-</html>
+{% endblock %}

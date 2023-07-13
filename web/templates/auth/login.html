@@ -1,4 +1,4 @@
-{% extends "auth/auth_base.html" %}
+{% extends "layouts/auth.html" %}
 
 {% block title %}Login{% endblock %}
 
@@ -42,7 +42,7 @@
 
               <p class="fs-6">
                 New member?
-                <a class="link-info text-decoration-none" href="{{url_for('auth.register')}}">
+                <a class="link-info text-decoration-none" href="{{ url_for('auth.register') }}">
                   Register
                 </a>
               </p>

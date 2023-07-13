@@ -1,0 +1,62 @@
+<!doctype html>
+<html class="h-100" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- SEO Meta Tags -->
+    <!-- dynamic -->
+    <meta name="title" content="Vitrine" />
+    <meta name="description" content="Showcase your brand" />
+    <meta name="author" content="Sixtus Agbo" />
+
+    <!-- Open Graph / Facebook -->
+    <!-- dynamic -->
+    <meta property="og:type" content="website" />
+    <!-- TODO: Set this to  -->
+    <meta property="og:url" content="https://vitrine.me" />
+    <meta property="og:title" content="Vitrine" />
+    <meta property="og:description" content="Showcase your brand" />
+    <meta
+      property="twitter:image"
+      content="{{ url_for('static', filename='images/banner.jpeg', _external=True) }}" />
+
+    <!-- Twitter -->
+    <!-- dynamic -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://vitrine.me" />
+    <meta property="twitter:title" content="Vitrine" />
+    <meta property="twitter:description" content="Showcase your brand" />
+    <meta
+      property="twitter:image"
+      content="{{ url_for('static', filename='images/banner.jpeg', _external=True) }}" />
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon.ico') }}"
+      type="image/x-icon" />
+
+    <title>{% block title %}{% endblock %} | Vitrine</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/bootstrap.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/aos.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/guest.css') }}" />
+    {% block styles %} {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/bootstrap.bundle.min.js') }}"></script>
+
+    {% block scripts %} {% endblock %}
+  </head>
+
+  {% block body %} {% endblock %}
+</html>
