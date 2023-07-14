@@ -3,7 +3,7 @@
 from web.auth import auth_bp as auth, api_url
 from flask import flash, redirect, render_template, request, url_for
 import requests
-from flask_login import login_user, current_user
+from flask_login import login_required, login_user, current_user, logout_user
 from models.brand import Brand
 
 
@@ -74,3 +74,17 @@ def register_post():
     user = Brand(**data)
     login_user(user, remember=True)
     return redirect(url_for("dashboard.home"))
+
+
+@auth.route("/logout")
+@login_required
+def logout():
+    """Log user out of the application"""
+    # Call api to logout
+    requests.get("{}/logout".format(api_url), auth=(current_user.token, ""))
+
+    # log user out from flask_login
+    logout_user()
+
+    # redirect to login page
+    return redirect(url_for("auth.login"))

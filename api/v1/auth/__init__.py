@@ -45,6 +45,20 @@ def get_token():
     return jsonify({"token": token})
 
 
+@auth_bp.route("/logout")
+@auth.login_required
+def logout():
+    """Remove user token"""
+    # unset the user's token
+    g.user.token = None
+    g.user.save()
+
+    # remove current user
+    g.user = None
+
+    return jsonify({})
+
+
 @auth.error_handler
 def unauthorized():
     """When user is not authorized"""
