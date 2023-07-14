@@ -13,6 +13,7 @@ Base = declarative_base()
 
 class BaseModel:
     """Base class for all vitrine models"""
+
     id = Column(String(60), primary_key=True, nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.utcnow())
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
@@ -21,16 +22,16 @@ class BaseModel:
         """Initialize attributes"""
         if kwargs:
             for key, value in kwargs.items():
-                if key == 'created_at' or key == 'updated_at':
-                    format = '%Y-%m-%dT%H:%M%S.%f'
+                if key == "created_at" or key == "updated_at":
+                    format = "%Y-%m-%dT%H:%M:%S.%f"
                     value = datetime.strptime(value, format)
                 if not isinstance(value, list):
                     setattr(self, key, value)
-            if 'id' not in kwargs:
+            if "id" not in kwargs:
                 self.id = str(uuid.uuid4())
-            if 'created_at' not in kwargs:
+            if "created_at" not in kwargs:
                 self.created_at = datetime.now()
-            if 'updated_at' not in kwargs:
+            if "updated_at" not in kwargs:
                 self.updated_at = datetime.now()
         else:
             self.id = str(uuid.uuid4())
@@ -39,8 +40,9 @@ class BaseModel:
 
     def __str__(self):
         """Return informal string representation"""
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id,
-                                     self.to_dict())
+        return "[{}] ({}) {}".format(
+            self.__class__.__name__, self.id, self.to_dict()
+        )
 
     def save(self):
         """Store object"""
@@ -53,12 +55,12 @@ class BaseModel:
         result = {}
 
         for key, value in self.__dict__.items():
-            if key == 'created_at' or key == 'updated_at':
-                result[key] = value.strftime('%Y-%m-%dT%H:%M:%S.%f')
+            if key == "created_at" or key == "updated_at":
+                result[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
             else:
                 result[key] = value
-        if '_sa_instance_state' in result.keys():
-            del result['_sa_instance_state']
+        if "_sa_instance_state" in result.keys():
+            del result["_sa_instance_state"]
 
         return result
 

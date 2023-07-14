@@ -3,12 +3,14 @@
 Handles all RESTful API actions for `Brand` objects
 """
 from api.v1.views import app_views
-from flask import jsonify, abort, request
+from flask import jsonify, abort, request, g
 from models import storage
 from models.brand import Brand
+from api.v1.auth import auth
 
 
 @app_views.route("/brands")
+@auth.login_required
 def brands():
     """Return in JSON all the brands on vitrine"""
     result = []
@@ -20,12 +22,16 @@ def brands():
 
 
 @app_views.route("/brands/<handle>")
-def brand(handle):
+@app_views.route("/reload_brand/<magic>")
+@auth.login_required
+def brand(handle=None, magic=None):
     """Return in JSON a brand information based on the brand's handle"""
-    brand = storage.get_brand(handle)
-
-    if not brand:
-        abort(404)
+    if magic == "current":
+        brand = g.user
+    else:
+        brand = storage.get_brand(handle)
+        if not brand:
+            abort(404)
 
     return brand.to_dict()
 

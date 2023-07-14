@@ -1,17 +1,19 @@
 #!/usr/bin/python3
 """Module that contains brand model"""
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Boolean
+from sqlalchemy import Column, String, Boolean, null
 from sqlalchemy.orm import relationship
 from passlib.apps import custom_app_context as pwd_context
 from itsdangerous.url_safe import URLSafeTimedSerializer as Serializer
 from itsdangerous import BadSignature, SignatureExpired
 import models
+from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 
 
 class Brand(BaseModel, Base):
     """Brand model"""
-    __tablename__ = 'brands'
+
+    __tablename__ = "brands"
 
     name = Column(String(49), nullable=False)
     handle = Column(String(15), nullable=False)
@@ -29,9 +31,11 @@ class Brand(BaseModel, Base):
     instagram_url = Column(String(255), nullable=True)
     youtube_url = Column(String(255), nullable=True)
     telegram_url = Column(String(255), nullable=True)
+    token = Column(String(65), nullable=True)
 
-    detail_points = relationship("DetailPoint", cascade="all, delete",
-                                 backref="brand")
+    detail_points = relationship(
+        "DetailPoint", cascade="all, delete", backref="brand"
+    )
     works = relationship("Work", cascade="all, delete", backref="brand")
 
     def to_dict(self):
@@ -52,22 +56,44 @@ class Brand(BaseModel, Base):
         """Verify password"""
         return pwd_context.verify(password, self.password)
 
-    def generate_auth_token(self, secret_key, expiration=600):
-        """Auth token with expiration of 10 minutes"""
-        s = Serializer(secret_key, expires_in=expiration)
-        return s.dumps({'handle': self.handle})
+    def generate_auth_token(self, secret_key):
+        """Generate authentication token"""
+        s = Serializer(secret_key)
+        return s.dumps({"handle": self.handle})
 
     @staticmethod
-    def verify_auth_token(token, secret_key):
+    def verify_auth_token(token, secret_key, expiration=600):
         """Return user if token is valid"""
         s = Serializer(secret_key)
         try:
-            data = s.loads(token)
+            data = s.loads(token, max_age=expiration)
         except SignatureExpired:
-            # valid token, but expired
-            return None
+            handle = s.loads(token).get("handle")
+            user = models.storage.get_brand(handle)
+            user.token = None
+            user.save()
+            return user
         except BadSignature:
             # invalid token
             return None
-        user = models.storage.get_brand(data['handle'])
+        user = models.storage.get_brand(data["handle"])
         return user
+
+    @property
+    def is_active(self):
+        """True, as all users are active"""
+        return True
+
+    def get_id(self):
+        """Return the token that can be used to reload the user"""
+        return self.token
+
+    @property
+    def is_authenticated(self):
+        """Return true if user is authenticated"""
+        return True if self.token else False
+
+    @property
+    def is_anonymous(self):
+        """Anonymous users are not supported"""
+        return False
