@@ -3,7 +3,7 @@
 Handles all RESTful API actions for `Brand` objects
 """
 from api.v1.views import app_views
-from flask import jsonify, abort, request, g
+from flask import jsonify, abort, request, g, current_app
 from models import storage
 from models.brand import Brand
 from api.v1.auth import auth
@@ -63,6 +63,7 @@ def create_brand():
     del payload["password"]
     brand = Brand(**payload)
     brand.hash_password(password)
+    brand.token = brand.generate_auth_token(current_app.config["SECRET_KEY"])
     brand.save()
 
     return jsonify(brand.to_dict()), 201

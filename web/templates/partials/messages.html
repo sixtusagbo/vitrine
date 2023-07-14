@@ -1,0 +1,11 @@
+              {% with errors = get_flashed_messages(category_filter=["error"]) %}
+              {% if errors %}
+              <div class="alert alert-danger d-flex align-items-center pb-0" role="alert">
+                <ul>
+                  {%- for error in errors %}
+                  <li>{{ error }}</li>
+                  {% endfor -%}
+                </ul>
+              </div>
+              {% endif %}
+              {% endwith %}
