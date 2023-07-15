@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-from flask import Flask, render_template, session, app
+from flask import Flask, render_template
 import requests
-from models import storage
 from models.brand import Brand
+from models.work import Work
 from web.dashboard import dashboard
 from web.general import general_bp
 from web.auth import auth_bp
@@ -14,18 +14,13 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 # Replace with strong secret key in production
 app.config["SECRET_KEY"] = "dev"
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(minutes=10)
 app.register_blueprint(general_bp)
 app.register_blueprint(auth_bp)
 app.register_blueprint(dashboard)
 login_manager = LoginManager()
 login_manager.login_view = "auth.login"
 login_manager.init_app(app)
-
-
-@app.teardown_appcontext
-def dispose(_):
-    """Release database connections"""
-    storage.close()
 
 
 @app.errorhandler(404)
@@ -39,13 +34,11 @@ def load_user(token):
     response = requests.get(
         "{}/reload_brand/current".format(api_url), auth=(token, "")
     )
-    return Brand(**response.json())
+    data = response.json()
+    user = Brand(**data)
+    user.works = [Work(**work) for work in data["works"]]
 
-
-@app.before_request
-def make_session_permanent():
-    session.permanent = True
-    app.permanent_session_lifetime = timedelta(minutes=8)
+    return user
 
 
 if __name__ == "__main__":

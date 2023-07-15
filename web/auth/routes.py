@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Authentication blueprint routes"""
+from models.work import Work
 from web.auth import auth_bp as auth, api_url
 from flask import flash, redirect, render_template, request, url_for
 import requests
@@ -44,7 +45,9 @@ def login_post():
     # get the user
     brand_url = "{}/brands/{}".format(api_url, handle)
     response = requests.get(brand_url, auth=(token, ""))
-    user = Brand(**response.json())
+    data = response.json()
+    user = Brand(**data)
+    user.works = [Work(**work) for work in data["works"]]
 
     login_user(user, remember=remember)
     return redirect(url_for("dashboard.home"))

@@ -7,16 +7,35 @@
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <h2 class="h2">Dashboard</h2>
           <div class="btn-toolbar mb-2 mb-md-0">
-            <h4>Hi, brandname</h4>
+            {% if not user.is_new %}
+            <a href="" class="btn btn-primary me-3">Add work</a>
+            {% endif %}
+            <h4>Hi, {{ user.handle }}</h4>
           </div>
         </div>
 
         <div class="content">
+          {% if user.is_new %}
           <p>
             The humble wizard of vitrine known as <span class="fst-italic">Vixpert</span> will take you through the
             process of setting up your profile.
           </p>
 
           <p>Get started with <a href="vixpert.html" class="link-primary text-decoration-none fw-bold">vixpert</a>.</p>
+          {% else %}
+          <div class="row">
+            {% for work in user.works %}
+            <div class="col-lg-4 col-md-6">
+              <div class="card mb-3 h-100">
+                <img src="{{ work.image_url }}" alt="{{ work.title }}" class="img-fluid">
+                <div class="card-body">
+                  <h5 class="card-title">{{ work.title }}</h5>
+                  <p class="card-text">{{ work.description }}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
         </div>
 {% endblock %}

@@ -27,13 +27,33 @@ def brands():
 def brand(handle=None, magic=None):
     """Return in JSON a brand information based on the brand's handle"""
     if magic == "current":
+        # user is authenticated user, prevent another read request to database
         brand = g.user
     else:
         brand = storage.get_brand(handle)
         if not brand:
             abort(404)
+    result = brand.to_dict(with_works=True)
 
-    return brand.to_dict()
+    return jsonify(result)
+
+
+@app_views.route("/brands/<handle>/<sentinel>")
+def public_brand(handle=None, sentinel=None):
+    """Return in JSON a brand information based on the brand's handle"""
+    brand = storage.get_brand(handle)
+    if not brand or not sentinel:
+        abort(404)
+    result = brand.to_dict()
+    if sentinel == "public":
+        # From JS or any where
+        del result["password"]
+        del result["token"]
+        del result["id"]
+    else:
+        abort(403)
+
+    return jsonify(result)
 
 
 @app_views.route("/brands", methods=["POST"])

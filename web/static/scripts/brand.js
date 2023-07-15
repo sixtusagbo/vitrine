@@ -12,6 +12,7 @@ const populateDOM = () => {
   $('meta[property="twitter:title"]').attr('content', `${brand.name} | Vitrine`);
   $('meta[property="og:url"]').attr('content', currentUrl);
   $('meta[property="twitter:url"]').attr('content', currentUrl);
+  $('link[rel="canonical"]').attr('href', currentUrl);
 
   if (brand.description) {
     $('meta[name="description"]').attr('content', brand.description);

@@ -1,13 +1,12 @@
 #!/usr/bin/python3
 """Module that contains brand model"""
 from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Boolean, null
+from sqlalchemy import Column, String, Boolean
 from sqlalchemy.orm import relationship
 from passlib.apps import custom_app_context as pwd_context
-from itsdangerous.url_safe import URLSafeTimedSerializer as Serializer
-from itsdangerous import BadSignature, SignatureExpired
+from models.helpers import MySerializer
+from itsdangerous.exc import BadSignature, SignatureExpired
 import models
-from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 
 
 class Brand(BaseModel, Base):
@@ -31,20 +30,22 @@ class Brand(BaseModel, Base):
     instagram_url = Column(String(255), nullable=True)
     youtube_url = Column(String(255), nullable=True)
     telegram_url = Column(String(255), nullable=True)
-    token = Column(String(65), nullable=True)
+    token = Column(String(128), nullable=True)
 
     detail_points = relationship(
         "DetailPoint", cascade="all, delete", backref="brand"
     )
     works = relationship("Work", cascade="all, delete", backref="brand")
 
-    def to_dict(self):
+    def to_dict(self, with_works=False):
         """Return modified version of the inherited to_dict"""
         result = super(Brand, self).to_dict()
 
         result["detail_points"] = []
         for detail_point in self.detail_points:
             result["detail_points"].append(detail_point.content)
+        if with_works:
+            result["works"] = [work.to_dict() for work in self.works]
 
         return result
 
@@ -58,13 +59,13 @@ class Brand(BaseModel, Base):
 
     def generate_auth_token(self, secret_key):
         """Generate authentication token"""
-        s = Serializer(secret_key)
+        s = MySerializer(secret_key)
         return s.dumps({"handle": self.handle})
 
     @staticmethod
     def verify_auth_token(token, secret_key, expiration=600):
         """Return user if token is valid"""
-        s = Serializer(secret_key)
+        s = MySerializer(secret_key)
         try:
             data = s.loads(token, max_age=expiration)
         except SignatureExpired:
@@ -97,3 +98,14 @@ class Brand(BaseModel, Base):
     def is_anonymous(self):
         """Anonymous users are not supported"""
         return False
+
+    @property
+    def is_new(self):
+        """Check if a user is new"""
+        return (
+            True
+            if not self.statement
+            and not self.description
+            and not self.cover_image
+            else False
+        )

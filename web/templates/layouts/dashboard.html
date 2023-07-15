@@ -45,6 +45,9 @@
     <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
       <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
     </symbol>
+    <symbol id="share-fill" viewBox="0 0 16 16">
+      <path d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/>
+    </symbol>
   </svg>
 
   <header class="navbar sticky-top bg-dark flex-md-nowrap p-0 shadow" data-bs-theme="dark">
@@ -76,7 +79,7 @@
           <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{{ url_for('dashboard.home') }}">
                   <svg class="bi">
                     <use xlink:href="#house-fill" />
                   </svg>
@@ -84,8 +87,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <!-- dynamic this brand -->
-                <a class="nav-link d-flex align-items-center gap-2" href="brand.html" target="_blank">
+                <a class="nav-link d-flex align-items-center gap-2" href="/{{ user.handle }}" target="_blank">
                   <svg class="bi">
                     <use xlink:href="#eye-fill" />
                   </svg>
@@ -93,11 +95,11 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                <a class="nav-link d-flex align-items-center gap-2" href="" id="share-btn">
                   <svg class="bi">
-                    <use xlink:href="#plus-circle" />
+                    <use xlink:href="#share-fill" />
                   </svg>
-                  Add work
+                  Share brand
                 </a>
               </li>
             </ul>
@@ -115,6 +117,15 @@
                   Vixpert
                 </a>
               </li>
+              {% if not user.is_new %}
+              <li class="nav-item">
+                <a class="nav-link d-flex align-items-center gap-2" href="#">
+                  <svg class="bi">
+                    <use xlink:href="#plus-circle" />
+                  </svg>
+                  Add work
+                </a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link d-flex align-items-center gap-2" href="#">
                   <svg class="bi">
@@ -123,6 +134,7 @@
                   Settings
                 </a>
               </li>
+              {% endif %}
             </ul>
 
             <hr class="my-3">
@@ -146,10 +158,69 @@
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         {% block content %}
         {% endblock %}
+
+        <div class="offcanvas offcanvas-start" data-bs-backdrop="static"
+          tabindex="-1" id="shareCanvas" aria-labelledby="shareCanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="shareCanvasLabel">Share brand on</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <button class="btn btn-info mb-3" data-sharer="twitter"
+              data-title="Checkout {{ user.name }}"
+              data-url="{{ url_for('general.brand', handle=user.handle, _external=True) }}">
+              Twitter
+            </button>
+            <button class="btn btn-primary mb-3" data-sharer="facebook"
+              data-title="Checkout {{ user.name }}"
+              data-url="{{ url_for('general.brand', handle=user.handle, _external=True) }}">
+              Facebook
+            </button>
+            <button class="btn btn-info mb-3" data-sharer="linkedin"
+              data-title="Checkout {{ user.name }}"
+              data-url="{{ url_for('general.brand', handle=user.handle, _external=True) }}">
+              Linkedin
+            </button>
+            <button class="btn btn-success mb-3" data-sharer="whatsapp"
+              data-title="Checkout {{ user.name }}"
+              data-url="{{ url_for('general.brand', handle=user.handle, _external=True) }}">
+              Whatsapp
+            </button>
+            <button class="btn btn-info mb-3" data-sharer="telegram"
+              data-title="Checkout {{ user.name }}"
+              data-url="{{ url_for('general.brand', handle=user.handle, _external=True) }}">
+              Telegram
+            </button>
+            <button class="btn btn-danger mb-3" data-sharer="reddit"
+              data-title="Checkout {{ user.name }}"
+              data-url="{{ url_for('general.brand', handle=user.handle, _external=True) }}">
+              Reddit
+            </button>
+          </div>
+        </div>
       </main>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
+  <script>
+    $('#share-btn').click(function(event) {
+      event.preventDefault();
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Checkout {{ user.name }}',
+          url: '{{ url_for('general.brand', handle=user.handle, _external=True) }}',
+        }).then(() => {
+          console.log('Brand shared!');
+        }).catch(console.error);
+      } else {
+        const shareCanvas = new bootstrap.Offcanvas($('#shareCanvas'));
+        shareCanvas.show();
+      }
+    });
+  </script>
 </body>
 
 {% endblock %}
