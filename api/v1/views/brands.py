@@ -2,6 +2,7 @@
 """
 Handles all RESTful API actions for `Brand` objects
 """
+from sqlalchemy.util import methods_equivalent
 from api.v1.views import app_views
 from flask import jsonify, abort, request, g, current_app
 from models import storage
@@ -79,11 +80,38 @@ def create_brand():
     if storage.get_brand(payload["handle"]):
         abort(400, "Handle is already taken")
 
-    password = payload["password"]
-    del payload["password"]
     brand = Brand(**payload)
-    brand.hash_password(password)
+    brand.hash_password(payload["password"])
     brand.token = brand.generate_auth_token(current_app.config["SECRET_KEY"])
     brand.save()
 
     return jsonify(brand.to_dict()), 201
+
+
+@app_views.route("/brands/<handle>", methods=["PUT"])
+@auth.login_required
+def update_brand(handle):
+    """Update a brand"""
+    payload = request.get_json()
+    if not payload:
+        abort(400, "Not a JSON")
+    if "handle" in payload and " " in payload["handle"]:
+        abort(400, "Handle contains space")
+    if "handle" in payload and len(payload["handle"]) > 15:
+        abort(400, "Handle is too long")
+    if "name" in payload and len(payload["name"]) > 49:
+        abort(400, "Name is too long")
+    if "handle" in payload and storage.get_brand(payload["handle"]):
+        abort(400, "Handle is already taken")
+
+    brand = storage.get_brand(handle)
+    if not brand:
+        abort(404)
+    ignore = ["id", "created_at", "updated_at"]
+
+    for key, value in payload.items():
+        if key not in ignore:
+            setattr(brand, key, value)
+    brand.save()
+
+    return jsonify(brand.to_dict())
