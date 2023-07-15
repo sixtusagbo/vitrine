@@ -21,7 +21,10 @@
             process of setting up your profile.
           </p>
 
-          <p>Get started with <a href="vixpert.html" class="link-primary text-decoration-none fw-bold">vixpert</a>.</p>
+          <p>
+          Get started with <a href="{{ url_for('dashboard.vixpert') }}"
+              class="link-primary text-decoration-none fw-bold">vixpert</a>.
+          </p>
           {% else %}
           <div class="row">
             {% for work in user.works %}

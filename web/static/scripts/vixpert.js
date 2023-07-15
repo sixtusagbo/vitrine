@@ -2,7 +2,7 @@ $(document).ready(function () {
   let currentTab = 0; // Current tab is set to be the first tab (0)
   showTab(currentTab); // Display the current tab
 
-  function showTab (n) {
+  function showTab(n) {
     // This function will display the specified tab of the form...
     const x = document.getElementsByClassName('tab');
     // x[n].style.display = 'block';
@@ -25,7 +25,7 @@ $(document).ready(function () {
   }
 
   /* Figure out which tab to display */
-  function changeStep (n) {
+  function changeStep(n) {
     const tabs = document.getElementsByClassName('tab');
     // If I'm to move forward and any field in the current tab is invalid exit the function
     if (n === 1 && !validateForm()) return false;
@@ -45,7 +45,7 @@ $(document).ready(function () {
   }
 
   /* Deal with validation of the form fields */
-  function validateForm () {
+  function validateForm() {
     let x = true;
     let y = true;
     let i = true;
@@ -58,9 +58,13 @@ $(document).ready(function () {
       // If a field is empty
       if (y[i].value === '') {
         // add "is-invalid" class to the field
-        y[i].className += ' is-invalid';
+        if ($(y[i]).hasClass('is-valid')) $(y[i]).removeClass('is-valid');
+        if (!$(y[i]).hasClass('is-invalid')) $(y[i]).addClass('is-invalid');
         // and set the current valid status to false
         valid = false;
+      } else {
+        if ($(y[i]).hasClass('is-invalid')) $(y[i]).removeClass('is-invalid');
+        if (!$(y[i]).hasClass('is-valid')) $(y[i]).addClass('is-valid');
       }
     }
 
@@ -74,7 +78,7 @@ $(document).ready(function () {
   }
 
   /* Update active step indicator */
-  function fixStepIndicator (n) {
+  function fixStepIndicator(n) {
     let i = document.getElementsByClassName('step');
     const x = document.getElementsByClassName('step');
 

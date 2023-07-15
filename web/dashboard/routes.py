@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Dashboard home routes"""
+"""Dashboard routes"""
 from flask import render_template
 from web.dashboard import dashboard
 from flask_login import login_required, current_user
@@ -10,3 +10,10 @@ from flask_login import login_required, current_user
 def home():
     """Dashboard home"""
     return render_template("dashboard/home.html", user=current_user)
+
+
+@dashboard.route("/vixpert")
+@login_required
+def vixpert():
+    """Stepwise form wizard"""
+    return render_template("dashboard/vixpert.html", user=current_user)
