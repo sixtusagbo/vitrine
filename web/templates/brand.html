@@ -5,30 +5,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- SEO Meta Tags -->
-  <meta name="title" content="{{ meta["name"] }} | Vitrine">
-  <meta name="description" content="{{ meta["description"] }}">
+  <!-- Metas -->
+  <meta name="title">
+  <meta name="description">
   <meta name="author" content="Sixtus Agbo Miracle">
 
   <!--Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vitrine.me/{{ meta["handle"] }}">
-  <meta property="og:title" content="{{ meta["name"] }} | Vitrine">
-  <meta property="og:description" content="{{ meta["description"] }}">
-  <meta property="og:image" content="{{ meta["cover_image"] }}">
+  <meta property="og:url">
+  <meta property="og:title">
+  <meta property="og:description">
+  <meta property="og:image">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://vitrine.me/{{ meta["handle"] }}">
-  <meta property="twitter:title" content="{{ meta["name"] }} | Vitrine">
-  <meta property="twitter:description" content="{{ meta["description"] }}">
-  <meta property="twitter:image" content="{{ meta["cover_image"] }}">
+  <meta property="twitter:url">
+  <meta property="twitter:title">
+  <meta property="twitter:description">
+  <meta property="twitter:image">
 
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
 
-  <title>{{ meta["name"] }} | Vitrine</title>
+  <title></title>
 
   <!-- Styles -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap"
@@ -60,10 +60,10 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#projects">Projects</a>
-          </li>
+  </li>
         </ul>
         <span class="nav-item">
-          <a class="btn-outline-sm" href="#contact">Contact {{ 'me' if is_solopreneur else 'us' }}</a>
+          <a class="btn-outline-sm" href="#contact">Contact <span class="solopreneur">us</span></a>
         </span>
       </div> <!-- end of navbar-collapse -->
     </div> <!-- end of container -->
@@ -83,7 +83,7 @@
             <p class="p-large description">Let us handle your hair. There's never a better way
               to make your hair look better. We make your hair radiate your beauty!</p>
             <a class="btn-solid-lg" href="#details">More details</a>
-            <a class="btn-outline-lg" href="#contact">Contact {{ 'me' if is_solopreneur else 'us' }}</a>
+            <a class="btn-outline-lg" href="#contact">Contact <span class="solopreneur">us</span></a>
           </div> <!-- end of text-container -->
         </div> <!-- end of col -->
         <div class="col-lg-5 col-xl-7">
@@ -131,7 +131,7 @@
                 </p>
               </li>
             </ul>
-            <a class="btn-solid-reg" href="#contact">Book {{ 'me' if is_solopreneur else 'us' }}</a>
+            <a class="btn-solid-reg" href="#contact">Book <span class="solopreneur">us</span></a>
           </article> <!-- end of text-container -->
         </div> <!-- end of col -->
       </div> <!-- end of row -->
@@ -225,7 +225,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <iframe src="https://www.google.com/maps?q={{ meta["address"] }}&amp;output=embed" allowfullscreen=""></iframe>
+          <iframe src="https://www.google.com/maps?q=Ezillo+Ebonyi+Nigeria&amp;output=embed" allowfullscreen="" id="googleMaps"></iframe>
         </div> <!-- end of col -->
         <div class="col-lg-6">
           <div class="text-container">
@@ -303,7 +303,7 @@
               </a>
             </span>
             <p class="p-small">
-              {{ 'I' if is_solopreneur else 'We' }} would love to hear from you <a href="mailto:contact@site.com" id="brand-email"><strong>address@mail.com</strong></a>
+              <span class="solopreneur">We</span> would love to hear from you <a href="mailto:contact@site.com" id="brand-email"><strong>address@mail.com</strong></a>
             </p>
           </div> <!-- end of footer-col -->
         </div> <!-- end of col -->
