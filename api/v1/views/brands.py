@@ -113,7 +113,7 @@ def update_brand(handle):
     for key, value in payload.items():
         if key not in ignore:
             setattr(brand, key, value)
-    if payload["detail_points"]:
+    if payload.get("detail_points"):
         for value in payload["detail_points"]:
             if len(brand.detail_points) == 4:
                 break

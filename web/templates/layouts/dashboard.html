@@ -251,27 +251,70 @@
                     aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form class="row" method="POST">
+                <form class="row" method="POST" action="/dashboard/settings">
                   <div class="col-12">
                     <div class="mb-3">
-                      <label for="title" class="form-label">Title</label>
-                      <input type="text" class="form-control form-control-lg border-dark" id="title" name="tagline" required>
+                      <label for="tagline" class="form-label">Tagline</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="tagline" name="statement" value="{{ user.statement }}">
                     </div>
                     <div class="mb-3">
                       <label for="description" class="form-label">Description</label>
-                      <input type="text" class="form-control form-control-lg border-dark" id="description" name="description" required>
+                      <input type="text" class="form-control form-control-lg"
+                        id="description" name="description" value="{{ user.description }}">
                     </div>
                     <div class="mb-3">
-                      <label for="image_url" class="form-label">Image Link</label>
-                      <input type="text" class="form-control form-control-lg border-dark" id="image_url" name="cover_image" required>
+                      <label for="address" class="form-label">Address</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="address" name="address" value="{{ user.address }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="cover_image" class="form-label">Cover Image Link</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="cover_image" name="cover_image" value="{{ user.cover_image }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="detail_image" class="form-label">Detail Image Link</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="detail_image" name="detail_image" value="{{ user.detail_image }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="detail_lead" class="form-label">Detail Lead</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="detail_lead" name="detail_lead" value="{{ user.detail_lead }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="twitter_url" class="form-label">Twitter Link</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="twitter_url" name="twitter_url" value="{{ user.twitter_url }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="whatsapp_no" class="form-label">Whatsapp Number</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="whatsapp_no" name="whatsapp_no" value="{{ user.whatsapp_no }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="telegram_url" class="form-label">Telegram Link</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="telegram_url" name="telegram_url" value="{{ user.telegram_url }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="instagram_url" class="form-label">Instagram Link</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="instagram_url" name="instagram_url" value="{{ user.instagram_url }}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="youtube_url" class="form-label">Youtube Link</label>
+                      <input type="text" class="form-control form-control-lg"
+                        id="youtube_url" name="youtube_url" value="{{ user.youtube_url }}">
                     </div>
                   </div>
-                </form>
-              </div>
+                </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-warning"
                   data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-success">Save</button>
+                <button type="submit" class="btn btn-success">Save</button>
+                </form>
               </div>
             </div>
           </div>

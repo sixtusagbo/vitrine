@@ -22,6 +22,7 @@ def vixpert():
 
 
 @dashboard.route("/vixpert", methods=["POST"])
+@dashboard.route("/settings", methods=["POST"])
 @login_required
 def vixpert_post():
     """Update brand"""
