@@ -31,6 +31,8 @@ def create_work(handle):
     brand = storage.get_brand(handle)
     if not brand:
         abort(404)
+    if len(brand.works) == 6:
+        abort(400, "Works limit of 6 reached!")
     payload = request.get_json()
     if not payload:
         abort(400, "Not a JSON")
@@ -44,3 +46,23 @@ def create_work(handle):
     work.save()
 
     return jsonify(work.to_dict()), 201
+
+
+@app_views.route("/works/<work_id>", methods=["PUT"])
+@auth.login_required
+def update_work(work_id):
+    """Update work with given id"""
+    work = storage.get(Work, work_id)
+    if not work:
+        abort(404)
+    payload = request.get_json()
+    if not payload:
+        abort(400, "Not a JSON")
+
+    ignore = ["id", "created_at", "updated_at"]
+    for key, value in payload.items():
+        if key not in ignore:
+            setattr(work, key, value)
+    work.save()
+
+    return jsonify(work.to_dict())
