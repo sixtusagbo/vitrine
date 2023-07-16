@@ -15,6 +15,7 @@
         </div>
 
         <div class="content">
+          {% include "partials/messages.html" %}
           {% if user.is_new %}
           <p>
             The humble wizard of vitrine known as <span class="fst-italic">Vixpert</span> will take you through the
@@ -27,7 +28,7 @@
           </p>
           {% else %}
           <div class="row">
-            {% for work in user.works %}
+            {% for work in user.works|sort(attribute="title") %}
             <div class="col-lg-4 col-md-6">
               <div class="card mb-3 h-100">
                 <img src="{{ work.image_url }}" alt="{{ work.title }}" class="img-fluid">
@@ -37,6 +38,10 @@
                 </div>
               </div>
             </div>
+            {% else %}
+              <p>
+              Apparently, you've not added any of your brand's work. Improve your brand page by adding a <a href="#">work</a>.
+              </p>
             {% endfor %}
           </div>
           {% endif %}

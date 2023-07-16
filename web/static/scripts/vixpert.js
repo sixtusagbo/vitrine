@@ -56,7 +56,7 @@ $(document).ready(function () {
     // Check every input field in the current tab
     for (i = 0; i < y.length; i++) {
       // If a field is empty
-      if (y[i].value === '') {
+      if (y[i].value === '' && $(y[i]).attr('optional') === undefined) {
         // add "is-invalid" class to the field
         if ($(y[i]).hasClass('is-valid')) $(y[i]).removeClass('is-valid');
         if (!$(y[i]).hasClass('is-invalid')) $(y[i]).addClass('is-invalid');
@@ -101,7 +101,7 @@ $(document).ready(function () {
     e.preventDefault();
 
     $('#detail_points').append(
-      '<input type="text" class="form-control form-control bg-gray-800 border-dark detail_point mb-2">'
+      '<input type="text" class="form-control form-control bg-gray-800 border-dark detail_point mb-2" name="detail_point">'
     );
 
     if ($('.detail_point').length === 5) {

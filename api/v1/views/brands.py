@@ -8,6 +8,7 @@ from flask import jsonify, abort, request, g, current_app
 from models import storage
 from models.brand import Brand
 from api.v1.auth import auth
+from models.detail_point import DetailPoint
 
 
 @app_views.route("/brands")
@@ -107,11 +108,18 @@ def update_brand(handle):
     brand = storage.get_brand(handle)
     if not brand:
         abort(404)
-    ignore = ["id", "created_at", "updated_at"]
+    ignore = ["id", "created_at", "updated_at", "detail_points"]
 
     for key, value in payload.items():
         if key not in ignore:
             setattr(brand, key, value)
+    if payload["detail_points"]:
+        for value in payload["detail_points"]:
+            if len(brand.detail_points) == 4:
+                break
+            point = DetailPoint()
+            point.content = value
+            brand.detail_points.append(point)
     brand.save()
 
     return jsonify(brand.to_dict())

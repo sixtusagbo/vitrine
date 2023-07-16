@@ -49,7 +49,13 @@ def login_post():
     user = Brand(**data)
     user.works = [Work(**work) for work in data["works"]]
 
+    # login the user
     login_user(user, remember=remember)
+
+    # redirect appropriately
+    next = request.args.get("next")
+    if next:
+        return redirect(next)
     return redirect(url_for("dashboard.home"))
 
 
