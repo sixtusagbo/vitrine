@@ -16,15 +16,28 @@ class TestViewsWorks(unittest.TestCase):
     def setUpClass(cls):
         """Before all tests"""
         cls.base_url = "http://{}:{}/api/v1".format(
-            getenv("VIT_API_HOST", "0.0.0.0"),
-            getenv("VIT_API_PORT", "5000"))
-        cls.acmes = Brand(name="Acme Corporations", handle="acmecorps",
-                          email="info@acmecorps.com", password="acmes@123")
-        cls.acmes.save()
+            getenv("VIT_API_HOST", "0.0.0.0"), getenv("VIT_API_PORT", "5000")
+        )
+        brand_data = {
+            "name": "Acme Corporations",
+            "handle": "acmecorps",
+            "email": "info@acmecorps.com",
+            "password": "acmes@123",
+        }
+
+        # call api to store the new user
+        response = requests.post(
+            "{}/brands".format(cls.base_url), json=brand_data
+        )
+        data = response.json()
+        cls.acmes = Brand(**data)
+        cls.token = cls.acmes.token
 
     def test_works(self):
         """Check if works endpoint returns the correct response"""
-        response = requests.get(f"{self.base_url}/brands/acmecorps/works")
+        response = requests.get(
+            f"{self.base_url}/brands/acmecorps/works", auth=(self.token, "")
+        )
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(response.json(), list)
 
@@ -32,10 +45,13 @@ class TestViewsWorks(unittest.TestCase):
         """Check if work is created"""
         work_data = {
             "title": "Acmes Project M",
-            "image_url": "https://acmecorps.com/static/images/project-m"
+            "image_url": "https://acmecorps.com/static/images/project-m",
         }
-        response = requests.post(f"{self.base_url}/brands/acmecorps/works",
-                                 json=work_data)
+        response = requests.post(
+            f"{self.base_url}/brands/acmecorps/works",
+            json=work_data,
+            auth=(self.token, ""),
+        )
         data = response.json()
         self.assertEqual(response.status_code, 201)
         self.assertIsInstance(data, dict)

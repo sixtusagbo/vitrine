@@ -9,11 +9,7 @@ from models import storage
 from api.v1.auth import auth
 
 
-classes = {
-    "brands": Brand,
-    "detail_points": DetailPoint,
-    "works": Work
-}
+classes = {"brands": Brand, "detail_points": DetailPoint, "works": Work}
 
 
 @app_views.route("/metrics")
@@ -24,7 +20,6 @@ def statistics():
 
     for key, value in classes.items():
         result[key] = storage.count(value)
-    result["current_user"] = g.user.to_dict()
 
     return jsonify(result)
 
@@ -32,9 +27,9 @@ def statistics():
 @app_views.route("/mi_mi_show_dummy")
 def dummy():
     """Display the dummy data generated with AI"""
-    from os import path
     import json
-    with open("/home/vagrant/vitrine/dummy_data.json", "r") as file:
+
+    with open("dummy_data.json", "r") as file:
         list_json = json.load(file)
 
     return jsonify(list_json)

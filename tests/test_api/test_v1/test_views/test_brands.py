@@ -11,21 +11,46 @@ from datetime import datetime
 
 class TestViewsBrands(unittest.TestCase):
     """Test api brand endpoints"""
-    base_url = "http://{}:{}/api/v1".format(getenv("VIT_API_HOST", "0.0.0.0"),
-                                            getenv("VIT_API_PORT", "5000"))
+
+    @classmethod
+    def setUpClass(cls):
+        """Before all tests"""
+        cls.base_url = "http://{}:{}/api/v1".format(
+            getenv("VIT_API_HOST", "0.0.0.0"), getenv("VIT_API_PORT", "5000")
+        )
+        brand_data = {
+            "handle": "tesdle",
+            "name": "Tesdle",
+            "email": "tesdle@test.com",
+            "password": "tesdle123",
+        }
+
+        # call api to store the new user
+        response = requests.post(
+            "{}/brands".format(cls.base_url), json=brand_data
+        )
+        cls.token = response.json()["token"]
 
     def test_brands(self):
         """Check if brands endpoint returns the correct response"""
-        response = requests.get(f"{self.base_url}/brands")
+        response = requests.get(
+            f"{self.base_url}/brands", auth=(self.token, "")
+        )
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(response.json(), list)
 
     def test_brand(self):
         """Check if brand endpoint returns the correct response"""
-        acme = Brand(name="Acme Corporation", handle="acmecorp",
-                     email="info@acmecorp.com", password="acme@123")
+        acme = Brand(
+            name="Acme Corporation",
+            handle="acmecorp",
+            email="info@acmecorp.com",
+            password="acme@123",
+        )
         acme.save()
-        response = requests.get(f"{self.base_url}/brands/acmecorp")
+        response = requests.get(
+            f"{self.base_url}/brands/acmecorp", auth=(self.token, "")
+        )
         data = response.json()
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(data, dict)
@@ -39,7 +64,7 @@ class TestViewsBrands(unittest.TestCase):
             "name": "Test Brand",
             "handle": "te" + datetime.now().strftime("%Y%m.%f"),
             "email": "info@testbrand.com",
-            "password": "password"
+            "password": "password",
         }
         response = requests.post(f"{self.base_url}/brands", json=brand_data)
         data = response.json()

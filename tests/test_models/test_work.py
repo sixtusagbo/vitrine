@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 """Test Suite for Work model"""
 import unittest
+
+import requests
 from models.brand import Brand
 from models.base_model import BaseModel
 from models.work import Work
@@ -19,10 +21,12 @@ class TestWork(unittest.TestCase):
         self.brand.email = "somebrand@example.com"
         self.brand.password = "password"
 
-        self.work = Work(title="Some Brand Work",
-                         description="some work description",
-                         image_url="some_image.png",
-                         brand_id=self.brand.id)
+        self.work = Work(
+            title="Some Brand Work",
+            description="some work description",
+            image_url="some_image.png",
+            brand_id=self.brand.id,
+        )
 
         self.brand.save()
         self.work.save()
