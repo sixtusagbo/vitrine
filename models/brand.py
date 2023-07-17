@@ -103,9 +103,7 @@ class Brand(BaseModel, Base):
     def is_new(self):
         """Check if a user is new"""
         return (
-            True
-            if not self.statement
-            and not self.description
-            and not self.cover_image
-            else False
+            False
+            if self.statement and self.description and self.cover_image
+            else True
         )

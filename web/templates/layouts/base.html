@@ -7,27 +7,24 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- SEO Meta Tags -->
-    <!-- dynamic -->
     <meta name="title" content="Vitrine" />
     <meta name="description" content="Showcase your brand" />
-    <meta name="author" content="Sixtus Agbo" />
+    <meta name="author" content="Sixtus Agbo Miracle" />
 
     <!-- Open Graph / Facebook -->
-    <!-- dynamic -->
     <meta property="og:type" content="website" />
-    <!-- TODO: Revamp this SEO  -->
-    <meta property="og:url" content="https://vitrine.me" />
+    <meta
+      property="og:url"
+      content="{{ url_for('general.home', _external=True) }}" />
     <meta property="og:title" content="Vitrine" />
     <meta property="og:description" content="Showcase your brand" />
     <meta
       property="twitter:image"
       content="{{ url_for('static', filename='images/banner.jpeg', _external=True) }}" />
-    <link rel="canonical" href="our_url">
 
     <!-- Twitter -->
-    <!-- dynamic -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://vitrine.me" />
+    <meta property="twitter:url" content="{{ url_for('general.home') }}" />
     <meta property="twitter:title" content="Vitrine" />
     <meta property="twitter:description" content="Showcase your brand" />
     <meta
@@ -52,12 +49,13 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='styles/guest.css') }}" />
     {% block styles %} {% endblock %}
+  </head>
+
+  <body {% block body_attributes %}{% endblock %}>
+    {% block body %} {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="{{ url_for('static', filename='scripts/bootstrap.bundle.min.js') }}"></script>
-
     {% block scripts %} {% endblock %}
-  </head>
-
-  {% block body %} {% endblock %}
+  </body>
 </html>

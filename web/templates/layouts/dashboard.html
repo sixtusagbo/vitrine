@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block body %}
-<body>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="door-closed" viewBox="0 0 16 16">
       <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z" />
@@ -324,7 +323,9 @@
       </main>
     </div>
   </div>
+{% endblock %}
 
+{% block scripts %}
   <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
   <script>
     $('#share-btn').click(function(event) {
@@ -343,6 +344,4 @@
       }
     });
   </script>
-</body>
-
 {% endblock %}

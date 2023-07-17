@@ -8,7 +8,7 @@
     "statement": "Providing top-notch products",
     "description": "We are a leading provider of innovative solutions.",
     "is_solopreneur": false,
-    "cover_image": "https://source.unsplash.com/random/800x400?acmecorp",
+    "cover_image": "https://source.unsplash.com/random/800x400?innovation",
     "detail_lead": "About Acme Corporation",
     "detail_image": "https://source.unsplash.com/random/800x400?acmecorp-detail",
     "whatsapp_no": "+1234567890",
@@ -56,7 +56,7 @@
     "statement": "Empowering the future with innovation",
     "description": "We strive to create revolutionary solutions.",
     "is_solopreneur": false,
-    "cover_image": "https://source.unsplash.com/random/800x400?infiniteinnov",
+    "cover_image": "https://source.unsplash.com/random/800x400?infinite",
     "detail_lead": "About Infinite Innovations",
     "detail_image": "https://source.unsplash.com/random/800x400?infiniteinnov-detail",
     "whatsapp_no": "+9876543210",
@@ -104,7 +104,7 @@
     "statement": "Nurturing mind, body, and soul",
     "description": "We are dedicated to promoting holistic well-being.",
     "is_solopreneur": true,
-    "cover_image": "https://source.unsplash.com/random/800x400?vitalitywell",
+    "cover_image": "https://source.unsplash.com/random/800x400?wellness",
     "detail_lead": "About Vitality Wellness",
     "detail_image": "https://source.unsplash.com/random/800x400?vitalitywell-detail",
     "whatsapp_no": "+1357924680",
@@ -152,9 +152,9 @@
     "statement": "Redefining style with elegance",
     "description": "We curate the latest trends for fashion enthusiasts.",
     "is_solopreneur": false,
-    "cover_image": "https://source.unsplash.com/random/800x400?elevatefashion",
+    "cover_image": "https://source.unsplash.com/random/800x400?fashion",
     "detail_lead": "About Elevate Fashion",
-    "detail_image": "https://source.unsplash.com/random/800x400?elevatefashion-detail",
+    "detail_image": "https://source.unsplash.com/random/800x400?fashion-detail",
     "whatsapp_no": "+2468135790",
     "twitter_url": "https://twitter.com/elevatefashion",
     "instagram_url": "https://instagram.com/elevatefashion",
@@ -248,7 +248,7 @@
     "statement": "Envisioning the future of technology",
     "description": "We explore innovative tech solutions for a digital world.",
     "is_solopreneur": false,
-    "cover_image": "https://source.unsplash.com/random/800x400?techvision",
+    "cover_image": "https://source.unsplash.com/random/800x400?technology",
     "detail_lead": "About TechVision",
     "detail_image": "https://source.unsplash.com/random/800x400?techvision-detail",
     "whatsapp_no": "+7894561230",
@@ -392,9 +392,9 @@
     "statement": "Indulge in luxury and elegance",
     "description": "We offer exquisite and opulent experiences for discerning individuals.",
     "is_solopreneur": false,
-    "cover_image": "https://source.unsplash.com/random/800x400?luxehaven",
+    "cover_image": "https://source.unsplash.com/random/800x400?luxury",
     "detail_lead": "About Luxe Haven",
-    "detail_image": "https://source.unsplash.com/random/800x400?luxehaven-detail",
+    "detail_image": "https://source.unsplash.com/random/800x400?luxury-detail",
     "whatsapp_no": "+9876543210",
     "twitter_url": "https://twitter.com/luxehaven",
     "instagram_url": "https://instagram.com/luxehaven",
@@ -440,9 +440,9 @@
     "statement": "Promoting eco-friendly and sustainable living",
     "description": "We offer a wide range of eco-friendly products for a greener lifestyle.",
     "is_solopreneur": false,
-    "cover_image": "https://source.unsplash.com/random/800x400?ecoessentials",
+    "cover_image": "https://source.unsplash.com/random/800x400?eco-friendly",
     "detail_lead": "About EcoEssentials",
-    "detail_image": "https://source.unsplash.com/random/800x400?ecoessentials-detail",
+    "detail_image": "https://source.unsplash.com/random/800x400?eco-friendly-detail",
     "whatsapp_no": "+1234567890",
     "twitter_url": "https://twitter.com/ecoessentials",
     "instagram_url": "https://instagram.com/ecoessentials",
@@ -476,6 +476,54 @@
         "description": "Create an eco-conscious home with our sustainable products",
         "image_url": "https://source.unsplash.com/random/800x400?sustainable-home",
         "brand_id": "ecoessentials"
+      }
+    ]
+  },
+  {
+    "name": "Vitrine",
+    "handle": "vitrine",
+    "email": "miracleagbosixtus@gmail.com",
+    "password": "vit@123",
+    "address": "Ezillo, Ebonyi, Nigeria",
+    "statement": "Showcase your brand",
+    "description": "Let's make your brand visible to the world.",
+    "is_solopreneur": false,
+    "cover_image": "https://source.unsplash.com/random/800x400?vitrine",
+    "detail_lead": "Brands should be accessible online",
+    "detail_image": "https://source.unsplash.com/random/800x400?vitrine-detail",
+    "whatsapp_no": "+2347080854254",
+    "twitter_url": "https://twitter.com/sixtusagbo",
+    "instagram_url": "https://instagram.com/mirolicmiralo",
+    "youtube_url": "https://youtube.com/@sixtusagbo",
+    "telegram_url": "https://t.me/sixtusagbo",
+    "detail_points": [
+      {
+        "content": "With globalisation, you don't wanna be left out",
+        "brand_id": "vitrine"
+      },
+      {
+        "content": "This is information age for crying out loud",
+        "brand_id": "vitrine"
+      }
+    ],
+    "works": [
+      {
+        "title": "Community Events",
+        "description": "Our community engagements help brands engage with each other",
+        "image_url": "https://source.unsplash.com/random/800x400?conference",
+        "brand_id": "vitrine"
+      },
+      {
+        "title": "Website",
+        "description": "We're putting brands online with the help of our website",
+        "image_url": "https://source.unsplash.com/random/800x400?online",
+        "brand_id": "vitrine"
+      },
+      {
+        "title": "Location Display",
+        "description": "We use maps to display the location of a brand.",
+        "image_url": "https://source.unsplash.com/random/800x400?maps",
+        "brand_id": "vitrine"
       }
     ]
   }

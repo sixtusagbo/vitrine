@@ -1,0 +1,146 @@
+{% extends "layouts/base.html" %}
+
+{% block body_attributes %} class="bg-black
+text-white mt-0" {% endblock %}
+
+{% block styles %}
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100% !important;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<nav
+  id="navScroll"
+  class="navbar navbar-dark bg-black fixed-top px-vw-5"
+  tabindex="0">
+  <div class="container">
+    <a
+      class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center"
+      href="/">
+      <span class="ms-md-1 mt-1 fw-bolder me-md-5">Vitrine</span>
+    </a>
+
+    <ul
+      class="navbar-nav mx-auto mb-2 mb-lg-0 list-group list-group-horizontal">
+      <li class="nav-item">
+        <a
+          class="nav-link fs-5"
+          href="{{ url_for('auth.login') }}"
+          aria-label="Login to vitrine dashboard">
+          Login
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link fs-5"
+          href="{{ url_for('auth.register') }}"
+          aria-label="Become a vitriner">
+          Register
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  {% block content %}
+  {% endblock %}
+</main>
+
+<footer class="bg-black border-top border-dark">
+  <div class="container py-vh-4 text-secondary fw-lighter">
+    <div class="row">
+      <div class="col-12 col-lg-5 py-4 text-center text-lg-start">
+        <a
+          class="navbar-brand pe-md-4 fs-4 col-12 col-md-auto text-center fw-bolder"
+          href="/">
+          <span class="ms-md-1 mt-1 fw-bolder me-md-5">Vitrine</span>
+        </a>
+      </div>
+      <div class="col border-end border-dark">
+        <span class="h6">Go to</span>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="{{ url_for('general.brand', handle='vitrine') }}"
+              class="link-fancy link-fancy-light"
+              target="_blank">Our page</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('auth.login') }}" class="link-fancy link-fancy-light">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url_for('auth.register') }}" class="link-fancy link-fancy-light">
+              Register
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col border-end border-dark">
+        <span class="h6">Project</span>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="https://github.com/sixtusagbo/vitrine"
+              class="link-fancy link-fancy-light"
+              target="_blank">GitHub Repo</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://trello.com/b/17TmBcq8/portfolio-project" class="link-fancy link-fancy-light">Trello</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col" id="connect_with_me">
+        <span class="h6">Let's Connect</span>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a
+              href="https://github.com/sixtusagbo"
+              class="link-fancy link-fancy-light"
+              target="_blank">
+              GitHub
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://twitter.com/sixtusagbo"
+              class="link-fancy link-fancy-light"
+              target="_blank">
+              Twitter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://www.linkedin.com/in/sixtusagbo"
+              class="link-fancy link-fancy-light"
+              target="_blank">
+              LinkedIn
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              href="https://g.dev/sixtusagbo"
+              class="link-fancy link-fancy-light"
+              target="_blank">
+              Google Dev
+            </a>
+          </li>
+          <li class="nav-item mb-3">
+            <a
+              href="mailto:miracleagbosixtus@gmail.com"
+              class="link-fancy link-fancy-light"
+              target="_blank">
+              Send me email
+            </a>
+          </li>
+        </ul>
+      </div>
+  </div>
+  <div class="container text-center small py-vh-2 border-top border-dark">
+    &copy; <span class="text-light">Vitrine</span> 2023 | Developed by <span class="text-light">Sixtus Agbo Miracle</span>
+  </div>
+</footer>
+{% endblock %}
