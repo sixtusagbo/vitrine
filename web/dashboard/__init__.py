@@ -4,4 +4,6 @@ from flask import Blueprint
 
 dashboard = Blueprint("dashboard", __name__, url_prefix="/dashboard")
 
-from web.dashboard.routes import *
+from web.dashboard.index import *
+from web.dashboard.vixpert import *
+from web.dashboard.works import *
