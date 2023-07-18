@@ -2,13 +2,17 @@
 """
 Handles all RESTful API actions for `Brand` objects
 """
-from sqlalchemy.util import methods_equivalent
+import os
 from api.v1.views import app_views
 from flask import jsonify, abort, request, g, current_app
 from models import storage
 from models.brand import Brand
 from api.v1.auth import auth
 from models.detail_point import DetailPoint
+import smtplib
+import ssl
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 
 @app_views.route("/brands")
@@ -123,3 +127,71 @@ def update_brand(handle):
     brand.save()
 
     return jsonify(brand.to_dict())
+
+
+@app_views.route("/brands/<handle>/email", methods=["POST"])
+def send_email(handle):
+    """Send contact email to a brand"""
+    brand = storage.get_brand(handle)
+    if not brand:
+        abort(404)
+    payload = request.get_json()
+    if not payload:
+        abort(400, "Not a JSON")
+    if "name" not in payload:
+        abort(400, "Missing name")
+    if "email" not in payload:
+        abort(400, "Missing email")
+    if "message" not in payload:
+        abort(400, "Missing message")
+    if "site_url" not in payload:
+        abort(400, "Missing site_url")
+
+    sender = os.getenv("VIT_MAIL_SENDER", "mail.mirolic@gmail.com")
+    password = os.getenv("VIT_MAIL_PASSWORD")
+
+    message = MIMEMultipart("alternative")
+    message["Subject"] = "Vitrine: Contact Message from {}".format(
+        payload["name"]
+    )
+    message["From"] = sender
+    message["To"] = brand.email
+
+    text = """
+    Hi {},
+
+    Message from {}:
+    {},
+    {}
+    """.format(
+        brand.handle, payload["name"], payload["message"], payload["email"]
+    )
+    with open("web/templates/contact_mail.html", "r") as file:
+        html_only = file.read()
+    with open("web/templates/contact_styles.html", "r") as file:
+        styles = file.read()
+    html_only = html_only.format(
+        site_url=payload["site_url"],
+        message=payload["message"],
+        sender_name=payload["name"],
+        reply_email=payload["email"],
+    )
+    # Solve string format conflict with css tags issue
+    html = html_only.replace("<style></style>", styles)
+
+    # get mime objects
+    text_part = MIMEText(text, "plain")
+    html_part = MIMEText(html, "html")
+
+    # Add the parts to the `message`
+    # The email client will try to render the last part first
+    message.attach(text_part)
+    message.attach(html_part)
+
+    # Send email
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
+        server.login(sender, password)
+        server.sendmail(sender, brand.email, message.as_string())
+
+    return jsonify({"ok": True})

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Routes for the general blueprint"""
 from web.general import general_bp
-from flask import render_template
+from flask import flash, render_template
 import uuid
 
 

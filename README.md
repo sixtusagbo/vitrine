@@ -38,30 +38,32 @@ The API is built with [Flask](https://flask.palletsprojects.com), it integrates 
 
 - **Run API**
   _Run database setup scripts first_
+  <br>
 
 * For dev
 
 ```
-VIT_ENV=dev VIT_MYSQL_USER=vit_dev VIT_MYSQL_PWD=vit_dev_pwd VIT_MYSQL_DB=vit_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5001 python3 -m api.v1.app
+VIT_ENV=dev VIT_MYSQL_USER=vit_dev VIT_MYSQL_PWD=vit_dev_pwd VIT_MYSQL_DB=vit_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5001 VIT_MAIL_SENDER=<email> VIT_MAIL_PASSWORD=<mail_password> python3 -m api.v1.app
 ```
 
-* For test
+- For test
 
 ```
-VIT_ENV=test VIT_MYSQL_USER=vit_test VIT_MYSQL_PWD=vit_test_pwd VIT_MYSQL_DB=vit_test_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5001 python3 -m api.v1.app
+VIT_ENV=test VIT_MYSQL_USER=vit_test VIT_MYSQL_PWD=vit_test_pwd VIT_MYSQL_DB=vit_test_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5001 VIT_MAIL_SENDER=<email> VIT_MAIL_PASSWORD=<mail_password> python3 -m api.v1.app
 ```
 
 ## Run web application
 
 _**Note**: Start the api first before the web app_
+_Optional: VIT_API_URL_
 
-* For dev
+- For dev
 
 ```
 VIT_ENV=dev VIT_MYSQL_USER=vit_dev VIT_MYSQL_PWD=vit_dev_pwd VIT_MYSQL_DB=vit_db VIT_MYSQL_HOST=localhost python3 -m web.app
 ```
 
-* For test
+- For test
 
 ```
 VIT_ENV=test VIT_MYSQL_USER=vit_test VIT_MYSQL_PWD=vit_test_pwd VIT_MYSQL_DB=vit_test_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5001 python3 -m web.app

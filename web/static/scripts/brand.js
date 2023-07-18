@@ -1,4 +1,6 @@
 // for dynamic url
+'use strict';
+
 const { protocol, hostname, pathname, href: currentUrl } = window.location;
 const apiUrl = `${protocol}//${hostname}:5001/api/v1`;
 let brand = {};
@@ -129,6 +131,46 @@ const setup = () => {
       populateDOM();
     }
   );
+
+  // Fetch all the forms I need to apply custom bootstrap validation on
+  $('#contact-form').on('submit', function (event) {
+    event.preventDefault();
+
+    if (!document.getElementById('contact-form').checkValidity()) {
+      $(this).addClass('was-validated');
+      return false;
+    }
+
+    // Submit form with AJAX
+    const payload = {};
+    $.map($(this).serializeArray(), function (data, index) {
+      payload[data.name] = data.value;
+    });
+    payload.site_url = currentUrl;
+
+    $.ajax({
+      cache: false,
+      url: `${apiUrl}/brands/${handle}/email`,
+      type: 'POST',
+      data: JSON.stringify(payload),
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      success: function (data) {
+        if (data.ok) {
+          // Clear form
+          document.getElementById('contact-form').reset();
+
+          // Show toast
+          const mailToast = document.getElementById('mailToast');
+          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(mailToast);
+          toastBootstrap.show();
+        }
+      },
+      error: console.error
+    });
+  });
 };
 
 $(document).ready(setup);

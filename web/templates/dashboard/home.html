@@ -17,14 +17,21 @@
 
         <div class="content">
           {% include "partials/messages.html" %}
+
           {% if user.is_new %}
+          <div class="alert alert-primary d-flex align-items-center fs-6" role="alert">
+            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:">
+              <use xlink:href="#info-fill"/>
+            </svg>
+            If you have issues receiving contact emails, please check your spam and mark our message as not spam.
+          </div>
           <p>
             The humble wizard of vitrine known as <span class="fst-italic">Vixpert</span> will take you through the
             process of setting up your profile.
           </p>
 
           <p>
-          Get started with <a href="{{ url_for('dashboard.vixpert') }}"
+            Get started with <a href="{{ url_for('dashboard.vixpert') }}"
               class="link-primary text-decoration-none fw-bold">vixpert</a>.
           </p>
           {% else %}
