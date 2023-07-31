@@ -14,30 +14,30 @@
   <!-- Open Graph / Facebook -->
   <!-- dynamic -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vitrine.me">
+  <meta property="og:url" content="{{ url_for('general.home') }}">
   <meta property="og:title" content="Vitrine">
   <meta property="og:description" content="Showcase your brand">
-  <meta property="og:image" content="../../static/images/banner.jpeg">
+  <meta property="og:image" content="{{ url_for('static', filename='images/banner.jpg', _external=True) }}">
 
   <!-- Twitter -->
   <!-- dynamic -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://vitrine.me">
+  <meta property="twitter:url" content="{{ url_for('general.home') }}">
   <meta property="twitter:title" content="Vitrine">
   <meta property="twitter:description" content="Showcase your brand">
-  <meta property="twitter:image" content="../../static/images/banner.jpeg">
+  <meta property="twitter:image" content="{{ url_for('static', filename='images/banner.jpg', _external=True) }}">
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <title>404 Not found | Vitrine</title>
 
-  <link rel="stylesheet" href="../../static/styles/bootstrap.css">
-  <link rel="stylesheet" href="../../static/styles/aos.css">
-  <link rel="stylesheet" href="../../static/styles/guest.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/aos.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/guest.css') }}" />
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="../../static/scripts/bootstrap.bundle.min.js"></script>
-  <script src="../../static/scripts/form_validation.js" defer></script>
+  <script src="{{ url_for('static', filename='scripts/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='scripts/form_validation.js') }}"></script>
 
 </head>
 
