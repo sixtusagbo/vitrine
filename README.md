@@ -189,7 +189,7 @@ Built with 💖 by Sixtus Miracle Agbo
 
 ## Acknowledgements
 
-My gratitude goes to [ALX Africa](https://alxafrica.com), both staff and students. I also thank [GitHub](https://github.com) for making the Students Pack available to us. If "m to start mentioning people here, I could fill up a README with names of people. Generally, I give glory to almighty God for all his goodness and mercies in my life and his guidance throughout.
+My gratitude goes to [ALX Africa](https://alxafrica.com), both staff and students. I also thank [GitHub](https://github.com) for making the Students Pack available to us. If I start mentioning people here, I could fill up a README with names of people. Generally, I give glory to almighty God for all his goodness and mercies in my life and his guidance throughout.
 
 ## License
 
