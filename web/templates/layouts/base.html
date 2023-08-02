@@ -1,61 +1,46 @@
 <!doctype html>
 <html class="h-100" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- SEO Meta Tags -->
-    <meta name="title" content="Vitrine" />
-    <meta name="description" content="Showcase your brand" />
-    <meta name="author" content="Sixtus Agbo Miracle" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="{{ url_for('general.home', _external=True) }}" />
-    <meta property="og:title" content="Vitrine" />
-    <meta property="og:description" content="Showcase your brand" />
-    <meta
-      property="twitter:image"
-      content="{{ url_for('static', filename='images/banner.jpeg', _external=True) }}" />
+  <!-- SEO Meta Tags -->
+  <meta name="title" content="Vitrine" />
+  <meta name="description" content="Showcase your brand" />
+  <meta name="author" content="Sixtus Agbo Miracle" />
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="{{ url_for('general.home') }}" />
-    <meta property="twitter:title" content="Vitrine" />
-    <meta property="twitter:description" content="Showcase your brand" />
-    <meta
-      property="twitter:image"
-      content="{{ url_for('static', filename='images/banner.jpeg', _external=True) }}" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ url_for('general.home', _external=True) }}" />
+  <meta property="og:title" content="Vitrine" />
+  <meta property="og:description" content="Showcase your brand" />
+  <meta property="twitter:image" content="{{ url_for('static', filename='images/banner.jpg', _external=True) }}" />
 
-    <!-- Favicon -->
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='images/favicon.ico') }}"
-      type="image/x-icon" />
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="{{ url_for('general.home') }}" />
+  <meta property="twitter:title" content="Vitrine" />
+  <meta property="twitter:description" content="Showcase your brand" />
+  <meta property="twitter:image" content="{{ url_for('static', filename='images/banner.jpg', _external=True) }}" />
 
-    <title>{% block title %}{% endblock %} | Vitrine</title>
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon" />
 
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles/bootstrap.css') }}" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles/aos.css') }}" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='styles/guest.css') }}" />
-    {% block styles %} {% endblock %}
-  </head>
+  <title>{% block title %}{% endblock %} | Vitrine</title>
 
-  <body {% block body_attributes %}{% endblock %}>
-    {% block body %} {% endblock %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/aos.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/guest.css') }}" />
+  {% block styles %} {% endblock %}
+</head>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="{{ url_for('static', filename='scripts/bootstrap.bundle.min.js') }}"></script>
-    {% block scripts %} {% endblock %}
-  </body>
+<body {% block body_attributes %}{% endblock %}>
+  {% block body %} {% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="{{ url_for('static', filename='scripts/bootstrap.bundle.min.js') }}"></script>
+  {% block scripts %} {% endblock %}
+</body>
+
 </html>
