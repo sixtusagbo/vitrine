@@ -32,11 +32,10 @@ I met a woman at the ATM stand and she was complaining that of how complex Faceb
 
 I used a Kanban board on Trello to keep track of tasks in order to be able to stick to a plan. Gradually, I completed the checklist on each card and moved them to the next list.
 
-- [Trello Kanban Board](https://trello.com/b/17TmBcq8/portfolio-project)
-  <!-- - [Blog Post]() -->
-  <!-- - [Demo]() -->
-  <!-- - [Presentation]() -->
-  <!-- - [Website]() -->
+> [Trello Kanban Board](https://trello.com/b/17TmBcq8/portfolio-project) | [Demo](https://youtu.be/NoJ74GNxGos) | [Presentation](https://youtu.be/VEtwHiNCnKs)
+
+<!-- Blog -->
+<!-- Website -->
 
 ## Features
 
