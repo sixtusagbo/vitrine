@@ -1,9 +1,8 @@
 # Vitrine
 
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
-![GitHub repo size in bytes](https://img.shields.io/github/repo-size/sixtusagbo/vitrine)
 
-Vitrine is a web application that helps people portray their businesses online. Just like the tagline **Showcase your brand**, this project is envisioned to help people showcase their brand.
+Vitrine is a web application that helps brands display their businesses online. Just like the tagline **Showcase your brand**, this project is envisioned to help brands gain online presence.
 
 <!-- Visit the [website](https://vitrine.me). -->
 
@@ -16,7 +15,6 @@ Vitrine is a web application that helps people portray their businesses online. 
 - [Overview](#vitrine)
 - [The Story](#the-story)
 - [Features](#features)
-- [Demo](#demo)
 - [Getting Started](#getting-started)
   - [Launch the API](#launch-the-api-first)
   - [Launch the web app](#launch-the-web-app)
@@ -30,12 +28,15 @@ Vitrine is a web application that helps people portray their businesses online. 
 
 ## The Story
 
-I met a woman at the ATM stand and she was complaining that of how complex Facebook Business Suite is and that she needed a simple way to present her business online. She went further to tell me about how she lost jobs because she didn't have an online presence for her "small brand". I asked her what kind of platform would you like to use. She said something simple, she just wanted to present her business, what it is about and dispay few of her recent projects. I went further to ask my peers who were into online business and some other business people and they complained that the existing services require a lot of verification and upload and you can't just reuse a link from your cloud storage or somewhere. After thinking about all these, I decided to come up with an idea of a web application that can solve their problem. With simplicity in mind, I embarked on this project and thus, Vitrine was born.
+I met a woman at the ATM stand and she was complaining that of how complex Facebook Business Suite is and that she needed a simple way to present her business online. She went further to tell me about how she lost jobs because she didn't have an online presence for her "small brand". I asked her what kind of platform would you like to use. She said something simple, she just wanted to present her business, what it is about and dispay few of her recent projects. I went further to ask my peers who were into online business and some other business people and they complained that the existing services require a lot of verification and upload and you can't just reuse a link from your cloud storage or somewhere. After thinking about all these, I decided to come up with an idea of a web application that can solve their problem. With simplicity in mind, I embarked on this project. Thus, Vitrine was born.
 
-I used a Kanban board on Trello to keep track of tasks in order to be able to follow my plan through. Gradually, I completed the checklist on each card and moved them to the next list.
+I used a Kanban board on Trello to keep track of tasks in order to be able to stick to a plan. Gradually, I completed the checklist on each card and moved them to the next list.
 
 - [Trello Kanban Board](https://trello.com/b/17TmBcq8/portfolio-project)
-<!-- - [Blog Post]() -->
+  <!-- - [Blog Post]() -->
+  <!-- - [Demo]() -->
+  <!-- - [Presentation]() -->
+  <!-- - [Website]() -->
 
 ## Features
 
@@ -55,17 +56,13 @@ I used a Kanban board on Trello to keep track of tasks in order to be able to fo
 
   ![Vixpert](shot_vixpert.png)
 
-## Demo
-
-[![Watch the video](https://img.youtube.com/vi/NoJ74GNxGos/hqdefault.jpg)](https://youtu.be/NoJ74GNxGos)
-
 ## Getting Started
 
 <!-- You can easily access it from our website: https://vitrine.me -->
 
 - ### Launch the API first
 
-  1. Create database and user
+  1. Setup database
 
   ```bash
   mysql -uroot -p < setup_mysql_dev.sql
@@ -99,13 +96,19 @@ This project is tested with the unittest module.
 
    <details><summary><b>API Setup instructions</b></summary>
 
-   1. Start API in test mode:
+   1. Setup database
+
+   ```bash
+   mysql -uroot -p < setup_mysql_dev.sql
+   ```
+
+   2. Start API in test mode:
 
       ```
       VIT_ENV=test VIT_MYSQL_USER=vit_test VIT_MYSQL_PWD=vit_test_pwd VIT_MYSQL_DB=vit_test_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5001 VIT_MAIL_SENDER=<email> VIT_MAIL_PASSWORD=<mail_password> python3 -m api.v1.app
       ```
 
-   2. Start the web app in test mode:
+   3. Start the web app in test mode:
 
       ```
       VIT_ENV=test VIT_MYSQL_USER=vit_test VIT_MYSQL_PWD=vit_test_pwd VIT_MYSQL_DB=vit_test_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5001 python3 -m web.app
@@ -113,7 +116,7 @@ This project is tested with the unittest module.
 
    </details><br>
 
-2. Start the test:
+2. Run the test:
 
    ```
    VIT_ENV=test VIT_MYSQL_USER=vit_test VIT_MYSQL_PWD=vit_test_pwd VIT_MYSQL_DB=vit_test_db VIT_MYSQL_HOST=localhost VIT_API_HOST=0.0.0.0 VIT_API_PORT=5001 python3 -m unittest
@@ -127,7 +130,7 @@ All data sent to and received from the api are in JSON format.
 **Endpoints:**
 
 - /api/v1/metrics \
-  GET: Return the number of each object in storage by type.
+  GET: Return the number of objects in storage by type.
 
 - /api/v1/brands \
   GET: Return all the brands on vitrine \
@@ -169,9 +172,10 @@ All data sent to and received from the api are in JSON format.
 
 #### Back End:
 
+- Python
+- Flask - Python web framework
 - MySQL - Database
 - SQLAlchemy - Object Relational Mapper (ORM)
-- Flask - Python web framework
 - flask_cors - Cross Origin Resource Sharing
 - flask_httpauth - Authentication
 - itsdangerous - Token Authentication
@@ -189,7 +193,6 @@ All data sent to and received from the api are in JSON format.
 - Google Fonts
 - Flask - Python web framework
 - flask_login - Authentication
-- Python
 
 <!-- #### Deployment:
 
@@ -228,7 +231,7 @@ Built with 💖 by Sixtus Miracle Agbo
 
 ## Acknowledgements
 
-My gratitude goes to [ALX Africa](https://alxafrica.com), both staff and students. I also thank [GitHub](https://github.com) for making the Students Pack available to us. If I start mentioning people here, I could fill up a README with names of people. Generally, I give glory to almighty God for all his goodness and mercies in my life and his guidance throughout.
+My gratitude goes to [ALX Africa](https://alxafrica.com), both staff and students. I also thank [GitHub](https://github.com) for making the Students Pack available. If I start mentioning people here, I could fill up a README with names of people. Generally, I give glory to almighty God for his goodness and mercies in my life and his guidance on this project.
 
 ## License
 

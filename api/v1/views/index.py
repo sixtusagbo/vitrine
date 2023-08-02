@@ -15,7 +15,7 @@ classes = {"brands": Brand, "detail_points": DetailPoint, "works": Work}
 @app_views.route("/metrics")
 @auth.login_required
 def statistics():
-    """Retrieve the number of each object in storage by type"""
+    """Retrieve the number of objects in storage by type"""
     result = {}
 
     for key, value in classes.items():
