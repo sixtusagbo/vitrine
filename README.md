@@ -121,10 +121,49 @@ This project is tested with the unittest module.
 
 ## API
 
-The api can be found in api/v1/app.py
+The api can be found in api/v1/app.py\
+All data sent to and received from the api are in JSON format.
 
-<!-- **Endpoints:**
-/api/v1/ -->
+**Endpoints:**
+
+- /api/v1/metrics \
+  GET: Return the number of each object in storage by type.
+
+- /api/v1/brands \
+  GET: Return all the brands on vitrine \
+  POST: Return the newly created brand.
+
+  > T: Takes name, handle, email and password of the brand. Optional: address, statement, description, is_solopreneur, cover_image, detail_lead, detail_image, whatsapp_no, twitter_url, instagram_url, youtube_url, telegram_url.
+
+  PUT: Update brand.
+
+  > T: Takes any brand information that needs to be updated.
+
+- /api/v1/brands/`handle` \
+  GET: Return a brand based on the brand’s handle.
+
+- /api/v1/brands/`handle`/email \
+  POST: Send contact email to a brand.
+
+  > T: Takes name, email, message and site_url
+
+- /api/v1/brands/`handle`/works \
+  GET: Return works based on a brand's handle. \
+  POST: Return the newly created work.
+
+  > T: Takes title and image_url. Optional: description.
+
+  PUT: Update work
+
+  > T: Takes any work information that needs to be updated.
+
+- /api/v1/token \
+  GET: Return current authentication token or create and return a new one.
+
+- /api/v1/logout \
+  GET: Log a user out.
+
+> Authentication is required on all endpoints above except for sending contact email to a brand, creation of brand, retrieving a brand's works by handle and retrieving the metrics.
 
 ## Dependencies
 

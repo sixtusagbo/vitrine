@@ -27,7 +27,7 @@ def verify_password(handle_or_token, password):
 @auth_bp.route("/token")
 @auth.login_required
 def get_token():
-    """Return new token"""
+    """Return current authentication token or create and return a new one"""
     token = None
     if g.user.token:
         # Prevent double generation of token if token is still valid

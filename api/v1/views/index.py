@@ -22,14 +22,3 @@ def statistics():
         result[key] = storage.count(value)
 
     return jsonify(result)
-
-
-@app_views.route("/mi_mi_show_dummy")
-def dummy():
-    """Display the dummy data generated with AI"""
-    import json
-
-    with open("dummy_data.json", "r") as file:
-        list_json = json.load(file)
-
-    return jsonify(list_json)
