@@ -10,7 +10,7 @@ Vitrine is a web application that helps brands display their businesses online. 
 
 ![Screenshot](web/static/images/banner.jpg)
 
-## Table of content
+## Table of contents
 
 - [Overview](#vitrine)
 - [The Story](#the-story)
@@ -34,24 +34,24 @@ I used a Kanban board on Trello to keep track of tasks in order to be able to st
 
 > [Trello Kanban Board](https://trello.com/b/17TmBcq8/portfolio-project) | [Demo](https://youtu.be/NoJ74GNxGos) | [Presentation](https://youtu.be/VEtwHiNCnKs)
 
-<!-- Blog -->
+<!-- Blog Post -->
 <!-- Website -->
 
 ## Features
 
-- Brand Page
+- [x] Brand Page
 
   ![Brand Page](shot_brand_page_overview.png)
 
-- Recent Works
+- [x] Recent Works
 
   ![Recent Works](shot_recent_projects.png)
 
-- Contact
+- [x] Contact
 
   ![Contact](shot_contact_section.png)
 
-- Vixpert Wizard
+- [x] Vixpert Wizard
 
   ![Vixpert](shot_vixpert.png)
 
