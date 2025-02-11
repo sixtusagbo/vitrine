@@ -34,7 +34,8 @@ I used a Kanban board on Trello to keep track of tasks in order to be able to st
 
 > [Trello Kanban Board](https://trello.com/b/17TmBcq8/portfolio-project) | [Demo](https://youtu.be/NoJ74GNxGos) | [Presentation](https://youtu.be/VEtwHiNCnKs) | [Proposal](https://docs.google.com/presentation/d/16i5SlvbeWzeocnI2YJuiLwQjmsv_pmP_IO66iAuaN5E/edit?usp=sharing) | [MVP Specification](https://docs.google.com/document/d/1n3HC0mVSBzbYHnlwBwvteKrwBTWjd7AdTgEguXqYSEw/edit?usp=sharing) | [MVP Complete](https://docs.google.com/document/d/1z-hqo_SGJjRIznO50ZV9Bc5e4hZgzLTfxqa_nQHGi7k/edit?usp=sharing)
 
-<!-- Blog Post -->
+[Read the Blog Post](https://sixtusagbo.medium.com/when-a-simple-atm-conversation-sparked-a-solution-ad601ea1db50)
+
 <!-- Website -->
 
 ## Features
