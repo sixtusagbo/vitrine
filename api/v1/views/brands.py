@@ -147,7 +147,7 @@ def send_email(handle):
     if "site_url" not in payload:
         abort(400, "Missing site_url")
 
-    sender = os.getenv("VIT_MAIL_SENDER", "mail.mirolic@gmail.com")
+    sender = os.getenv("VIT_MAIL_SENDER", "admin@example.com")
     password = os.getenv("VIT_MAIL_PASSWORD")
 
     message = MIMEMultipart("alternative")
